@@ -1,0 +1,71 @@
+.allmain {
+  display: flex;
+  justify-content: center;
+  gap: 100px;
+  position: relative;
+  margin-top:-50px;
+}
+
+.head-des {
+    font-size: 4rem;
+    font-weight: 900;
+    
+  font-family: "Georgia", serif;
+  display: flex;
+  justify-content: center;
+  position: relative;
+  margin-left:-630px;
+  background-image: url(/images/waterbeerbg.png);
+    background-size: cover;
+    background-clip: text;
+    color: transparent;
+    animation: animate 20s linear infinite;
+
+}
+
+
+
+@keyframes animate {
+    to {
+        background-position-x:-500px ;
+    }
+}
+
+.description-main {
+  line-height: 35px;
+  color: rgba(143, 143, 143, 1);
+  margin-top: 100px;
+  font-family: "Georgia", serif;
+}
+
+.cheers {
+  width: 500px;
+  margin-top: -50px;
+}
+
+@media (max-width: 768px ) {
+    .head-des {
+        display: flex;
+        justify-content: center;
+        text-align: center;
+        position: relative;
+        font-size: 3rem;
+        margin-left:0px;
+        margin-top:-70px;
+    }
+
+    .description-main {
+        display: block;
+        justify-content: center;
+        text-align: center;
+        align-items: center;
+        margin-left: 0px;
+        position: relative;
+        color: black;
+        
+    }
+
+    .cheers {
+        display: none;
+    }
+}

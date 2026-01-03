@@ -1,0 +1,193 @@
+
+.carousel-container {
+  width: 100%;
+  height: 800px; 
+  position: relative;
+  overflow: hidden;
+  background-color: #000;
+  top: -150px;
+  z-index: 0;
+}
+
+/* รางเลื่อนรูป (ยาวต่อกัน) */
+.carousel-track {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  transition: transform 0.5s ease-in-out; /* เอฟเฟกต์เลื่อนนุ่มๆ */
+}
+
+/* กล่องของแต่ละรูป */
+.carousel-slide {
+  min-width: 100%; 
+  height: 100%;
+  position: relative;
+  
+  
+}
+
+.carousel-slide img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; 
+}
+
+/* เงาดำจางๆ ทับรูป (เพื่อให้ตัวหนังสือขาวเด่นขึ้น) */
+.overlay-dark {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.2); /* สีดำโปร่งแสง 40% */
+  z-index: 1;
+}
+
+/* ข้อความบนสไลด์ */
+.carousel-content {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  color: white;
+  z-index: 2; /* อยู่บนเงาดำ */
+  width: 80%;
+}
+
+.carousel-content h1 {
+    text-align: left;
+  font-size: 90px;
+    margin-top: -200px;
+    font-weight: 900;
+    margin-left: 150px;
+    line-height: 80px;
+    color: white;
+    text-shadow: 10px 4px 0 rgb(0, 0, 0);
+    transform: translateX(-150px);
+    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+    z-index: 3;
+    white-space: pre-line;
+    line-height: 1.2;
+    font-family: "Georgia", serif;
+}
+
+.carousel-content h3 {
+  font-size: 18px;
+  color: #eab308; /* สีทอง */
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  font-family: "Georgia", serif;
+}
+
+.cta-button {
+  background-color: #ffc107;
+    color: #000; 
+    padding: 12px 30px; 
+    text-decoration: none; 
+    display: inline-block; 
+    margin-top: 100px;
+    margin-left:-600px;
+    border: 3px solid #000; 
+    box-shadow: 6px 6px 0 #000; 
+    font-family: Arial, sans-serif; 
+    font-size: 1.2rem;
+    font-weight: bold;
+    z-index: 50;
+    position: absolute;
+    font-family: "Georgia", serif;
+
+}
+
+.cta-button:hover {
+  box-shadow: 4px 4px 0 #000; 
+    transform: translate(2px, 2px); 
+}
+
+/* ปุ่มกดซ้ายขวา */
+.nav-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(0,0,0,0.5);
+  color: white;
+  border: none;
+  font-size: 30px;
+  padding: 10px 15px;
+  cursor: pointer;
+  z-index: 990;
+  transition: 0.3s;
+}
+
+.nav-btn:hover {
+  background: #eab308;
+  color: black;
+}
+
+.prev { left: 20px; }
+.next { right: 20px; }
+
+/* จุด Dots ด้านล่าง */
+.carousel-dots {
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 10px;
+  z-index: 10;
+}
+
+.dot {
+  width: 12px;
+  height: 12px;
+  background-color: rgba(255,255,255,0.5);
+  border-radius: 50%;
+  cursor: pointer;
+  
+}
+
+.dot.active {
+  background-color: #eab308; /* สีทองเมื่อเลือกอยู่ */
+  transform: scale(1.2);
+}
+
+
+
+/* --- Responsive มือถือ --- */
+@media (max-width: 768px) {
+  .carousel-container {
+    height: 400px; 
+    margin-top: 135px;
+  }
+  
+  .carousel-content h1 {
+    font-size: 32px; /* ลดขนาดตัวหนังสือ */
+    text-align: center;
+    justify-content: center;
+    display: flex;
+    align-items: center;
+    margin-top:-100px;
+    margin-left:290px;
+  }
+  
+  .carousel-content h3 {
+    font-size: 14px;
+  }
+  
+  .nav-btn {
+    display: none; /* ซ่อนปุ่มลูกศรในมือถือ (ใช้ Dots แทน หรือ swipe เอาก็ได้) */
+  }
+  .cta-button {
+    width: 150px;
+    height: 50px;
+    font-size: 13px;
+    justify-content: center;
+    margin-top:20px;
+    text-align: center;
+    margin-left: -80px;
+    
+
+    
+  }
+}

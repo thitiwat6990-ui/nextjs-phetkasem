@@ -1,0 +1,123 @@
+
+
+.desktop-menu-group {
+  display: flex;
+  justify-content: center;
+  font-weight: bold;
+  color: black;
+  gap: 100px;
+}
+
+.main-header {
+  position: relative;
+  display: flex;
+  color: black;
+  justify-content: center;
+  gap: 100px;
+  background-color: transparent;
+  font-family: "Georgia", serif;
+  z-index: 10;
+}
+
+.main-header a {
+  margin-top: 60px;
+  font-size: 1.2rem;
+  font-weight: 900;
+}
+
+.main-header a:hover {
+  color: rgb(146, 146, 146);
+  cursor: pointer;
+}
+
+.logo-contact {
+  position: absolute;
+  display: flex;
+  right: 0px;
+  margin-right: 70px;
+  gap: 30px;
+  top: 60px;
+  z-index: 99;
+}
+
+.logo-contact:hover {
+  cursor: pointer;
+  color: orange;
+}
+
+.pkslogo {
+  width: 150px;
+}
+
+.hamburger-btn,
+.mobile-menu-dropdown {
+  display: none;
+  z-index: 2;
+}
+
+@media (max-width: 768px) {
+
+  
+  .logo-contact {
+    display: none;
+  }
+
+  .desktop-menu-group {
+    display: none;
+  }
+
+  .hamburger-btn {
+    display: block;
+    font-size: 40px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    position: absolute;
+    left: 20px;
+    color: orange;
+    top: 20px;
+    
+  }
+
+  .main-header {
+    justify-content: center;
+    position: relative;
+    display: flex;
+  }
+
+  .mobile-menu-dropdown {
+    display: block;
+    overflow: hidden;
+    max-height: 0;
+    transition: max-height 0.7s ease-out;
+    background: white;
+    color: rgb(85, 85, 85);
+    text-align: left;
+    width: 100%;
+    font-family: "Georgia", serif;
+    font-size: 1.2rem;
+    font-weight: 900;
+    position: absolute;
+    z-index: 1;
+    margin-top: -15px;
+  }
+
+  .mobile-menu-dropdown.open {
+    max-height: 350px;
+    position: absolute;
+    z-index: 99;
+  }
+
+  .mobile-menu-dropdown li {
+    padding: 10px;
+    list-style: none;
+    border-bottom: 1.5px solid #eee;
+    
+  }
+
+  .pkslogo {
+    margin-top: -20px;
+  }
+
+  
+}

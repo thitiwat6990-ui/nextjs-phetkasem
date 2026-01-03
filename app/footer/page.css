@@ -1,0 +1,221 @@
+.footer-container {
+    background-color: #1a283f;
+    margin-top: 26px;
+}
+
+.header-title {
+    display: flex;
+    position: relative;
+    justify-content: center;
+}
+.pks-brewing {
+    font-size: 28px;
+    font-weight: 900;
+    margin-top: 0px;
+    font-family: "Georgia", serif;
+    color: #a0a0a0;
+    text-transform: uppercase;
+    display: flex;
+    justify-content: center;
+    padding-top: 50px;
+}
+
+.pks-location {
+    font-size: 12px;
+    color: #a0a0a0;
+    font-weight: 200;
+    display: flex;
+    justify-content: center;
+    padding-top: 10px ;
+    text-align: center;
+    line-height: 25px;
+}
+
+.footer-inner {
+    display: grid;
+    grid-template-columns: 2fr 3fr;
+    gap: 16px;
+    align-items: end;
+    max-width: 1200px;
+    margin: auto;
+}
+
+.logo-zunnero {
+    width: 150px;
+    margin-bottom: 16px;
+    margin-top: 50px;
+}
+
+.contact-us {
+    font-size: 18px;
+    color: #a0a0a0;
+    font-family:'Georgia", serif' ;
+    font-weight: 500;
+}
+
+.svg {
+    color: #a0a0a0;
+    width: 24px;
+    height: auto;
+}
+
+.phone {
+    color: #a0a0a0;
+}
+
+.phone:hover {
+    cursor: pointer;
+    color: white;
+    text-decoration: underline;
+}
+
+.line {
+    color: #a0a0a0;
+}
+
+.line:hover {
+    cursor: pointer;
+    color: white;
+    text-decoration: underline;
+}
+
+.fb:hover {
+    cursor: pointer;
+    color: white;
+    text-decoration: underline;
+}
+
+.ig:hover {
+    cursor: pointer;
+    color: white;
+    text-decoration: underline;
+}
+
+.pks {
+    font-size: 20px;
+    font-weight: 500;
+    text-transform: uppercase;
+    justify-content: right;
+    display: flex;
+    margin-bottom: -2px;
+    font-family: "Georgia", serif;
+}
+
+.location {
+    font-size: 12px;
+    color: #a0a0a0;
+    font-weight: 200;
+    display: flex;
+    justify-content: center;
+    padding-top: 10px ;
+    text-align: right;
+    line-height: 25px;
+    justify-content: right;
+}
+
+.svg-location {
+    color: rgb(206, 0, 0);
+    width: 24px;
+    height: auto;
+}
+
+.pin-location {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 22px;
+    width: fit-content;
+    margin-left: 535px;
+}
+
+.pin-location:hover {
+    cursor: pointer;
+    color: white;
+    text-decoration: underline;
+}
+
+.copyright-bar {
+  background-color: #091322; 
+  color: #bdbdbd;
+  text-align: center; 
+  padding: 15px 0;   
+  font-size: 0.85rem; 
+  border-top: 1px solid rgba(255,255,255,0.1); 
+  width: 100%;
+  margin-top: 40px;
+}
+
+
+
+@media (max-width: 768px) {
+    .footer-container{
+        margin-top: -60px;
+    }
+    /* 1. จัดโครงสร้างหลักให้เรียงลงมา และชิดซ้าย */
+    .footer-inner {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start; /* 👈 สั่งให้ทุกก้อนชิดซ้าย */
+        gap: 20px;
+        padding: 0 30px; /* เว้นขอบซ้ายขวานิดหน่อย ไม่ให้ติดขอบจอเกินไป */
+    }
+
+    /* 2. โซนหัวข้อ (ที่เคยอยู่ตรงกลาง) ให้ชิดซ้าย */
+    .header-title, 
+    .pks-brewing {
+        justify-content: center; /* ดันไปซ้าย */
+        text-align: left;
+        padding-top: 20px;
+    }
+
+    .colume1 {
+        margin-top: 50px;
+    }
+
+    .colume2 {
+        margin-top: 50px;
+    }
+    
+    .pks-location {
+        justify-content: center;
+        text-align: center;
+    }
+
+    /* 3. โซนที่อยู่ฝั่งขวา (ที่เคยมี margin ติดลบ) รีเซ็ตให้ชิดซ้าย */
+    .pks {
+        margin-top: 20px; /* เว้นระยะห่างจากข้างบนหน่อย */
+        justify-content: flex-start; /* ดันไปซ้าย */
+        text-align: left;
+        width: 100%;
+    }
+
+    /* 4. รายละเอียดที่อยู่ */
+    .location {
+        text-align: left;      /* ตัวหนังสือชิดซ้าย */
+        justify-content: flex-start; /* Flex ชิดซ้าย */
+        padding-left: 0;
+    }
+
+    /* 5. ปุ่ม Pin (ที่เคยดันไปขวาสุด) เอามาชิดซ้าย */
+    .pin-location {
+        margin-left: 0;          /* 🚨 เอาค่า 545px ออก */
+        justify-content: flex-start; /* ดันไอคอนมาซ้าย */
+        width: 100%;
+        margin-top: 20px;
+    }
+
+    /* 6. (แถม) ปรับปุ่มกดให้เต็มจอ เพื่อให้กดง่ายในมือถือ */
+    .footer-buttons {
+        width: 100%;
+        flex-direction: column;
+    }
+    
+    .btn-orange {
+        width: 100%;       /* ขยายปุ่มเต็มจอ */
+        justify-content: center; /* ตัวหนังสือในปุ่มอยู่กลาง */
+        margin-bottom: 10px;
+    }
+
+    .logo-zunnero {
+        display: none;
+    }
+}

@@ -1,0 +1,305 @@
+.header {
+  font-size: 8rem;
+  color: rgb(255, 255, 255);
+  -webkit-text-stroke: 2px black;
+  font-weight: 900;
+  font-family: "Georgia", serif;
+  margin-top: 800px;
+  justify-content: center;
+  display: flex;
+  letter-spacing: 4px;
+  background: linear-gradient(to bottom, #ffffff, #ffffff);
+  -webkit-background-clip: text;
+  color: transparent;
+  z-index: 999;
+}
+
+.banner {
+  height: 100vh;
+  overflow: hidden;
+  position: relative;
+  margin-top: -300px;
+  
+}
+
+.banner .product {
+  width: 500px;
+  height: 500px;
+  position: absolute;
+  bottom: 170px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 19;
+  transition: 0.7s;
+  --left: 45px;
+}
+
+.banner .product .soda {
+  background: url(/images/rorkerlabelcan.png) var(--left),
+    url(/images/mock-up.png);
+  background-size: 150% 71%, auto 100%;
+  width: 380px;
+  aspect-ratio: 2 /2.5;
+  background-blend-mode: multiply;
+  mask-image: url(/images/mock-up.png);
+  mask-size: auto 100%;
+  transition: 1s;
+  overflow: hidden;
+  position: absolute;
+  z-index: 1;
+  top: 100px;
+  margin-left: 15px;
+}
+
+.banner .product:hover {
+  --left: -820px;
+  transform: translateX(-50%) translateY(-120px);
+}
+
+.banner .rock {
+  position: absolute;
+  inset: 0 0 0 0;
+  pointer-events: none;
+}
+
+.banner .rock img {
+  position: absolute;
+  transition: 0.7s;
+}
+
+.banner:has(.product:hover) .rock img:nth-child(1) {
+  transform: translateX(0%) translateY(50px);
+}
+
+.banner .rock img:nth-child(2) {
+  height: auto;
+  width: 100%;
+  bottom: -20px;
+  z-index: -1;
+}
+
+.banner-sing {
+  position: relative;
+  margin-top: -300px;
+}
+.banner-sing .singsep {
+  /* background-color: red; */
+
+  height: 500px;
+  position: absolute;
+  bottom: 170px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 19;
+  transition: 0.7s;
+  --left: 40px;
+}
+.banner-sing .singsep .soda2 {
+  background: url(/images/labelsingsep.png) var(--left),
+    url(/images/mock-up.png);
+  background-size: 150% 71.5%, auto 100%;
+  width: 380px;
+  aspect-ratio: 2 /2.5;
+  background-blend-mode: multiply;
+  mask-image: url(/images/mock-up.png);
+  mask-size: auto 100%;
+  transition: 1s;
+  overflow: hidden;
+  position: absolute;
+  z-index: 99;
+  margin-left: -520px;
+  top: 400px;
+  object-fit: contain;
+  max-height: 80vh;
+}
+.banner-sing .singsep:hover {
+  --left: -820px;
+  transform: translateX(0%) translateY(-120px);
+}
+
+.banner-razz {
+  position: relative;
+  margin-top: -300px;
+}
+.banner-razz .razz {
+  /* background-color: red; */
+
+  height: 500px;
+  position: absolute;
+  bottom: 170px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 19;
+  transition: 0.7s;
+  --left: 92px;
+}
+.banner-razz .razz .soda3 {
+  background: url(/images/rasp.png) var(--left), url(/images/mock-up.png);
+  background-size: 140% 71.5%, auto 100%;
+  width: 380px;
+  aspect-ratio: 2 /2.5;
+  background-blend-mode: multiply;
+  mask-image: url(/images/mock-up.png);
+  mask-size: auto 100%;
+  transition: 1s;
+  overflow: hidden;
+  position: absolute;
+  z-index: 99;
+  margin-left: 40px;
+  top: 400px;
+  object-fit: contain;
+  max-height: 80vh;
+}
+.banner-razz .razz:hover {
+  --left: -740px;
+  transform: translateX(-50%) translateY(-120px);
+}
+
+.banner-bluefeez {
+  position: relative;
+  margin-top: -300px;
+}
+.banner-bluefeez .bluefeez {
+  /* background-color: red; */
+
+  height: 500px;
+  position: absolute;
+  bottom: 170px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 19;
+  transition: 0.7s;
+  --left: 100px;
+}
+.banner-bluefeez .bluefeez .soda4 {
+  background: url(/images/bluefeez-label.png) var(--left),
+    url(/images/mock-up.png);
+  background-size: 140% 71.5%, auto 100%;
+  width: 380px;
+  aspect-ratio: 2 /2.5;
+  background-blend-mode: multiply;
+  mask-image: url(/images/mock-up.png);
+  mask-size: auto 100%;
+  transition: 1s;
+  overflow: hidden;
+  position: absolute;
+  z-index: 99;
+  margin-left: 330px;
+  top: 400px;
+  object-fit: contain;
+  max-height: 80vh;
+}
+.banner-bluefeez .bluefeez:hover {
+  --left: -740px;
+  transform: translateX(-50%) translateY(-120px);
+}
+
+.banner-coco {
+  position: relative;
+  margin-top: -300px;
+}
+.banner-coco .coco {
+  /* background-color: red; */
+
+  height: 0px;
+  position: absolute;
+  bottom: 170px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 19;
+  transition: 0.7s;
+  --left: 100px;
+}
+.banner-coco .coco .soda5 {
+  background: url(/images/cocowave-label.png) var(--left),
+    url(/images/mock-up.png);
+  background-size: 140% 71.5%, auto 100%;
+  width: 380px;
+  aspect-ratio: 2 /2.5;
+  background-blend-mode: multiply;
+  mask-image: url(/images/mock-up.png);
+  mask-size: auto 100%;
+  transition: 1s;
+  overflow: hidden;
+  position: absolute;
+  z-index: 99;
+  margin-left: -810px;
+  top: -100px;
+  object-fit: contain;
+  max-height: 80vh;
+}
+.banner-coco .coco:hover {
+  --left: -742px;
+  transform: translateX(-50%) translateY(-120px);
+}
+
+.sunnero {
+  font-size: 1rem;
+  color: rgb(255, 255, 255);
+  justify-content: center;
+  position: relative;
+  z-index: 999;
+  text-align: center;
+  margin-top: 250px;
+  font-family: 'Georgia", serif';
+  text-transform: uppercase;
+  margin-left: 0px;
+}
+
+@media (max-width: 768px) {
+  .header {
+    font-size: 2.5rem;
+    -webkit-text-stroke: 1px black;
+    width: 100%;
+    display: flex; /* เรียงแนวนอน */
+    justify-content: center; /* จัดกึ่งกลาง (ซ้าย-ขวา) */
+    align-items: center; /* จัดกึ่งกลาง (บน-ล่าง) */
+    width: 100%; /* สำคัญมาก! ต้องสั่งให้กว้างเต็มจอ ไม่งั้นมันจะหดแล้วไปลอยที่อื่น */
+    gap: 10px; /* ระยะห่างระหว่างคำ */
+    margin: 0;
+    padding-top: 700px;
+  }
+
+  .banner {
+    height: 950px;
+    z-index: -1;
+  }
+
+  .banner .product .soda {
+    display: none;
+  }
+
+  .banner .rock img:nth-child(2) {
+    width: 100%;
+    height: 50%;
+    top: 00px;
+    margin-top: 190px;
+    overflow: hidden;
+  }
+
+  .banner-sing .singsep .soda2 {
+    display: none;
+  }
+
+  .banner-razz .razz .soda3 {
+    display: none;
+  }
+
+  .banner-bluefeez .bluefeez .soda4 {
+    display: none;
+  }
+
+  .banner-coco .coco .soda5 {
+    display: none;
+  }
+
+  .sunnero {
+    margin-top: -350px;
+    display: flex;
+    justify-content: center;
+    font-weight: 900;
+    font-size: 1rem;
+    text-align: center;
+    align-items: center;
+  }
+}

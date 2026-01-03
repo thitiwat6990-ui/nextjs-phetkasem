@@ -1,0 +1,92 @@
+.overlay {
+  position: absolute;
+
+  width: 90%;
+  height: 500px;
+  margin-left: 70px;
+  z-index: 1;
+  margin-top: -800px;
+}
+
+.overlay::before {
+  content: "";
+  position: absolute;
+  justify-content: center;
+  top: 335;
+  left: 30;
+  width: 1300px;
+  height: 430px;
+  border: 1px solid rgb(255, 255, 255);
+  transform: scale(1);
+  transform-origin: center center;
+  z-index: 2;
+  pointer-events: none;
+  margin-top: -300px;
+}
+
+.enjoy {
+  font-size: 3rem;
+  font-weight: 900;
+  font-family: "Georgia", serif;
+  margin-top: 70px;
+  margin-left: 100px;
+}
+
+.des-beer {
+  font-size: 1.2rem;
+  margin-left: 100px;
+  font-family: "Georgia", serif;
+  margin-top: 10px;
+}
+
+.logo-homebrew {
+  width: 700px;
+  position: absolute;
+  margin-left: 700px;
+  margin-top: -370px;
+}
+
+@media (max-width: 768px) {
+  .overlay {
+    overflow: hidden;
+    width: 100%;
+    margin-left: 0px;
+    margin-top: -900px;
+  }
+
+  .overlay::before {
+    display: none;
+    overflow: hidden;
+    position: absolute;
+    top: 335;
+    left: 30;
+    width: 350px;
+    height: 430px;
+  }
+
+  .enjoy {
+    font-size: 1.7rem;
+    margin-top: 50px;
+    margin-left: 0px;
+    text-align: center;
+  }
+
+  .des-beer {
+    display: block;
+    font-size: 1rem;
+    font-weight: 900;
+    position: relative;
+    align-items: center;
+    justify-content: center;
+    width: 90%;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    margin-top: 40px;
+    max-width: 200px;
+  }
+
+  .logo-homebrew {
+    display: none;
+  }
+}
