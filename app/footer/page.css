@@ -61,6 +61,7 @@
 
 .phone {
     color: #a0a0a0;
+    overflow: hidden;
 }
 
 .phone:hover {

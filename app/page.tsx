@@ -5,7 +5,7 @@ export default function Mainpage() {
   return (
     <div>
       <div>
-        <Header />
+        
       </div>
       <main>
         <Home/>

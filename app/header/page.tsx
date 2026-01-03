@@ -10,7 +10,7 @@ export default function Header() {
     <nav >
       <div className="main-header">
         <div className="desktop-menu-group">
-          <a>HOME</a>
+          <a href=' / '>HOME</a>
           <a href='./pages'>PAGES</a>
         </div>
 
@@ -38,7 +38,7 @@ export default function Header() {
             </a>
           </li>
           <li>
-            <a>PAGES</a>
+            <a href='./pages'>PAGES</a>
           </li>
           <li>
             <a>GALLERY</a>
