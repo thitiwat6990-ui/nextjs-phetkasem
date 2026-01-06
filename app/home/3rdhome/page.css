@@ -30,6 +30,7 @@
   font-family: "Georgia", serif;
   margin-top: 70px;
   margin-left: 100px;
+  color: white;
 }
 
 .des-beer {
@@ -37,6 +38,7 @@
   margin-left: 100px;
   font-family: "Georgia", serif;
   margin-top: 10px;
+  color: white;
 }
 
 .logo-homebrew {
@@ -73,12 +75,12 @@
 
   .des-beer {
     display: block;
-    font-size: 1rem;
+    font-size: 1.3rem;
     font-weight: 900;
     position: relative;
     align-items: center;
     justify-content: center;
-    width: 90%;
+    
     margin-left: auto;
     margin-right: auto;
     text-align: center;

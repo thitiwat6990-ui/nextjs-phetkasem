@@ -7,7 +7,7 @@ export default function Header() {
   const [isOpen, setIsOpen] = useState(false); // เพิ่ม state สำหรับ hamburger
 
   return (
-    <nav >
+    <nav className="sticky-nav">
       <div className="main-header">
         <div className="desktop-menu-group">
           <a href=' / '>HOME</a>

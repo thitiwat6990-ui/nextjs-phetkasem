@@ -1,6 +1,8 @@
 .footer-container {
     background-color: #1a283f;
     margin-top: 26px;
+      font-family: 'Noto Sans';
+    letter-spacing: 2px;
 }
 
 .header-title {
@@ -12,7 +14,6 @@
     font-size: 28px;
     font-weight: 900;
     margin-top: 0px;
-    font-family: "Georgia", serif;
     color: #a0a0a0;
     text-transform: uppercase;
     display: flex;
@@ -49,7 +50,6 @@
 .contact-us {
     font-size: 18px;
     color: #a0a0a0;
-    font-family:'Georgia", serif' ;
     font-weight: 500;
 }
 
@@ -99,7 +99,6 @@
     justify-content: right;
     display: flex;
     margin-bottom: -2px;
-    font-family: "Georgia", serif;
 }
 
 .location {
@@ -125,7 +124,7 @@
     justify-content: flex-end;
     margin-top: 22px;
     width: fit-content;
-    margin-left: 535px;
+    margin-left: 515px;
 }
 
 .pin-location:hover {

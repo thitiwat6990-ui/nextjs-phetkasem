@@ -41,14 +41,9 @@ export default function Process() {
           <div className="soda5"></div>
         </div>
       </div>
+      
       <div>
-        <h1 className='coming-soon'>coming<br/>soon</h1>
-        <h1 className='coming-soon2'>coming<br/>soon</h1>
-        <h1 className='coming-soon3'>coming<br/>soon</h1>
-        <h1 className='coming-soon4'>coming<br/>soon</h1>
-      </div>
-      <div>
-        <p className="sunnero">sunnero by phetkasembrewing</p>
+        <p className="sunnero">zunnero by phetkasembrewing</p>
       </div>
       <div>
         <ProductCarousel />

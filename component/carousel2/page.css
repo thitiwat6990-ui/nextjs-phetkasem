@@ -80,11 +80,11 @@
 }
 
 .navButton:first-child {
-  left: 100px;
+  left: 50px;
 }
 
 .navButton:last-child {
-  right: 100px; 
+  right: 50px; 
 }
 
 .navButton:hover {

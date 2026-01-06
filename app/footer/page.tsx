@@ -17,7 +17,7 @@ const currentYear = new Date().getFullYear();
                     <span className='contact-us'>CONTACT US</span>
                     <div style={{display:'flex', marginTop:'15px', gap:'10px'}}>
                         <IoMdCall className='svg' ></IoMdCall>
-                        <a target='_blank' href='tel:092-6541461' className='phone'>92-654-1461</a>( Monday - Friday 10:00 AM - 6:00 PM )
+                        <a target='_blank' href='tel:092-6541461' className='phone'>92-654-1461</a>
                     </div>
                     <div style={{display:'flex', marginTop:'15px', gap:'10px'}}>
                         <FaLine className='svg' ></FaLine>
