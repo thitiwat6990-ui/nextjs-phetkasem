@@ -1,16 +1,19 @@
+
+
 .allmain {
   display: flex;
   justify-content: center;
   gap: 100px;
   position: relative;
   margin-top:-50px;
+    font-family: 'Noto Sans';
+ 
 }
 
 .head-des {
     font-size: 4rem;
     font-weight: 900;
-    
-  font-family: "Georgia", serif;
+  font-family: 'Noto Sans';
   display: flex;
   justify-content: center;
   position: relative;
@@ -20,6 +23,7 @@
     background-clip: text;
     color: transparent;
     animation: animate 20s linear infinite;
+    
 
 }
 

@@ -1,0 +1,275 @@
+.showcase-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  width: 100%;
+  height: 100vh; /* ความสูงเต็มจอ */
+  margin-top: -300px;
+  background-color: #ff8000; /* สีพื้นหลังม่วงตามคลิป */
+  font-family: "Noto Sans";
+}
+
+.name-product {
+    display: flex;
+    width: fit-content;
+    overflow: hidden;
+    font-weight: bolder ;
+    justify-content: flex-start;
+    margin-left: 0px;
+    margin-top: 450px;
+    font-size: 12rem;
+    transform: scaleY(2);
+  -webkit-text-stroke: 3px rgb(0, 0, 0, 0.1);
+  color: transparent;
+      text-transform: uppercase;
+      background-image: linear-gradient(to right, rgb(230, 230, 230, 0.1) 50%, transparent 50%);
+      background-size: 200% 100%;
+      background-position: 100% 0;
+      -webkit-background-clip: text;
+  background-clip: text;
+  transition: background-position 0.5s ease-out;
+}
+
+.name-product:hover {
+    background-position: 0 0;
+}
+
+.style {
+    font-size: 5rem;
+    font-weight: 900;
+    color: rgb(0, 0, 0, 1);
+    position: absolute;
+    margin-left:1000px;
+    margin-top: 80px;
+    transform: scaleY(1.5);
+
+}
+
+.product-wrapper {
+  width: 500px;
+  height: 500px;
+  position: absolute;
+  bottom: 170px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 1;
+  transition: 0.7s;
+  --left: 65px;
+  filter: drop-shadow(-150px 5px 15px rgba(0, 0, 0, 0.6));
+}
+
+.can-image-placeholder {
+  background: url(/images/rorkerlabelcan.png) var(--left),
+    url(/images/mock-up.png);
+  background-size: 150% 72%, auto 100%;
+  width: 620px;
+  aspect-ratio: 2 /2.5;
+  background-blend-mode: multiply;
+  mask-image: url(/images/mock-up.png);
+  mask-size: auto 100%;
+  transition: 1s;
+  overflow: hidden;
+  position: absolute;
+  top: 60px;
+  z-index: 9;
+  margin-left: 15px;
+}
+
+/* --- ปุ่มกด (วงกลม) --- */
+.toggle-btn {
+  position: absolute;
+  bottom: 25%; /* ตำแหน่งปุ่มแนวตั้ง */
+  left: 240px; /* ขยับปุ่มออกมาทางขวาของกระป๋องนิดนึง */
+  top: 600px;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background-color: #969696; /* สีชมพู */
+  border: 3px solid #000; /* ขอบดำ */
+  color: #000;
+  font-size: 30px;
+  font-weight: bold;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: all 0.3s ease; /* Animation ของปุ่ม */
+  z-index: 20;
+}
+
+.toggle-btn:hover {
+  transform: scale(1.1); /* ขยายเล็กน้อยเมื่อเอาเมาส์ชี้ */
+}
+
+/* เมื่อปุ่มถูกกด (Active State) */
+.toggle-btn.active {
+  background-color: #ff8000; /* เปลี่ยนสีเมื่อกด (ถ้าต้องการ) */
+  transform: rotate(45deg); /* หมุนเครื่องหมาย + ให้กลายเป็น X */
+}
+
+/* --- ส่วนข้อมูล (Info Panel) --- */
+.info-panel {
+  position: absolute;
+  right: 45%; /* วางไว้ทางซ้ายของกระป๋อง (เริ่มที่หลังกระป๋อง) */
+  top: 40%;
+    text-transform: uppercase;
+
+  transform: translateY(-50%);
+  text-align: left; /* จัดตัวหนังสือชิดขวา */
+  color: #000;
+  opacity: 0;
+  visibility: hidden;
+  transform: translate(50px, -50%); /* ดันไปทางขวา (ซ่อนหลังกระป๋อง) */
+  transition: all 0.5s cubic-bezier(0.68, -0.55, 0.27, 1.55); /* Animation เด้งดึ๋ง */
+}
+
+/* เมื่อเปิดข้อมูล (Active State) */
+.info-panel.show {
+  opacity: 1;
+  visibility: visible;
+  /* ดึงกลับมาตำแหน่งเดิม */
+  transform: translate(-140px, -50%);
+   /* ขยับออกมาทางซ้าย */
+}
+
+/* ตกแต่งตัวหนังสือ */
+.info-title {
+  margin-top: 850px;
+  font-size: 2rem;
+  font-weight: 900;
+  margin-bottom: 10px;
+  text-transform: uppercase;
+  letter-spacing: -1px;
+  font-family: "Noto Sans";
+}
+
+.info-list {
+  list-style: none;
+  padding: 0;
+  font-weight: 600;
+  font-family: "Noto Sans";
+}
+
+.info-list li {
+  font-size: 1rem;
+  border-bottom: 1px solid #000;
+  padding: 5px 0;
+  margin-bottom: 5px;
+}
+
+
+.toggle-btn2 {
+  position: absolute;
+  bottom: 25%; /* ตำแหน่งปุ่มแนวตั้ง */
+  left: 840px; /* ขยับปุ่มออกมาทางขวาของกระป๋องนิดนึง */
+  top: 370px;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background-color: #969696; /* สีชมพู */
+  border: 3px solid #000; /* ขอบดำ */
+  color: #000;
+  font-size: 30px;
+  font-weight: bold;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: all 0.3s ease; /* Animation ของปุ่ม */
+  z-index: 20;
+}
+
+.toggle-btn2:hover {
+  transform: scale(1.1); /* ขยายเล็กน้อยเมื่อเอาเมาส์ชี้ */
+}
+
+/* เมื่อปุ่มถูกกด (Active State) */
+.toggle-btn2.active {
+  background-color: #ff8000; /* เปลี่ยนสีเมื่อกด (ถ้าต้องการ) */
+  transform: rotate(45deg); /* หมุนเครื่องหมาย + ให้กลายเป็น X */
+}
+
+/* กำหนดค่าเริ่มต้น: ซ่อนไว้ (สูง 0, โปร่งใส) */
+.info-panel2 {
+  position: absolute;
+  height: 50;
+  opacity: 0;
+  overflow: hidden;
+  transition: all 0.5s ease-in-out;
+  margin-top: 0px; 
+  left: 300px;
+  display: flex;
+  gap: 50px;
+  width: 500px;
+  height: 120px;
+
+}
+
+/* เมื่อมี class .show: ให้ขยายความสูงออกมา */
+.info-panel2.show {
+    max-height: 400px;
+    
+  opacity: 1;
+}
+
+/* เพิ่มส่วนนี้เข้าไปสำหรับ ScaleBar */
+.barContainer {
+  position: relative;
+  height: 15px;            /* ความสูงของแท่งกราฟ */
+  width: 100%;             /* ให้ยืดเต็ม div ที่ครอบอยู่ */
+  border: 3px solid rgb(0, 0, 0); /* กรอบสีขาว */
+  box-sizing: border-box;
+  margin-top: 0px;
+  background: transparent;
+  z-index: 999; /* พื้นหลังใส */
+}
+
+.indicator {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 10px;             /* ความหนาของขีดดำ */
+  background-color: rgb(0, 0, 0);
+  transform: translateX(-50%);
+  z-index: 999;
+   /* จัดกึ่งกลางให้ตรงค่า % */
+}
+
+.flavor-label {
+  font-weight: bold;
+  text-transform: uppercase; /* เป็นตัวพิมพ์ใหญ่ทั้งหมด */
+  font-size: 16px;
+    font-family: "Noto Sans";
+
+  color: black; /* หรือสีที่คุณต้องการ */
+  flex: 0 0 auto; /* ไม่ต้องยืดหดตามพื้นที่ */
+}
+
+.flavor-label.first {
+  text-align: right; /* ชิดขวาเพื่อให้ชิดกับกราฟ */
+  width: 160px; 
+  margin-left: 0px; 
+  margin-top: -3px;     /* กำหนดความกว้างให้เท่ากันทุกแถว จะได้ตรงกัน */
+}
+
+.flavor-label.second {
+  text-align: right; /* ชิดขวาเพื่อให้ชิดกับกราฟ */
+  width: 160px; 
+  margin-left: -360px; 
+  margin-top: 30px;     /* กำหนดความกว้างให้เท่ากันทุกแถว จะได้ตรงกัน */
+}
+
+.flavor-label.thrid {
+  text-align: right; /* ชิดขวาเพื่อให้ชิดกับกราฟ */
+  width: 160px; 
+  margin-left: -360px; 
+  margin-top: 60px;     /* กำหนดความกว้างให้เท่ากันทุกแถว จะได้ตรงกัน */
+}
+
+.flavor-label.fourth {
+  text-align: right; /* ชิดขวาเพื่อให้ชิดกับกราฟ */
+  width: 160px; 
+  margin-left: -360px; 
+  margin-top: 90px;     /* กำหนดความกว้างให้เท่ากันทุกแถว จะได้ตรงกัน */
+}

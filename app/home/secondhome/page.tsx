@@ -2,7 +2,7 @@ import "./page.css";
 
 export default function Second() {
   return (
-    <div>
+    <div >
         <div>
             <h1 className='head-des'>crafted to inspire</h1>
         </div>
