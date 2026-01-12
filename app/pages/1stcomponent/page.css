@@ -1,275 +1,458 @@
-.showcase-container {
+body {
+  margin: 0;
+  padding: 0;
+  overflow: hidden; 
+  font-family: "Noto Sans", sans-serif;
+}
+
+.main-viewport {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  overflow-y: scroll; 
+  scroll-snap-type: y mandatory; 
+  scroll-behavior: smooth;
+  background-color: #ffffff;
+  transition: background-color 0.8s ease;
+  margin-top: -150px;
+}
+
+.main-viewport[data-page="0"] { background-color: #ff8000; } /* ส้ม */
+.main-viewport[data-page="1"] { background-color: #2a180d; } /* น้ำตาล */
+.main-viewport[data-page="2"] { background-color: #ff5e7e; } /* ชมพู */
+.main-viewport[data-page="3"] { background-color: #00fffb; } /* เขียว */
+.main-viewport[data-page="4"] { background-color: #ffffff; } /* น้ำเงินเข้ม */
+
+.fixed-content-layer {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  pointer-events: none; 
+  z-index: 10;
   display: flex;
   justify-content: center;
   align-items: center;
-  position: relative;
+}
+
+.fixed-content-layer button,
+.toggle-btn, 
+.toggle-btn2 {
+  pointer-events: auto;
+}
+
+.scroll-track {
+  position: absolute;
+  top: 0;
+  left: 0;
   width: 100%;
-  height: 100vh; /* ความสูงเต็มจอ */
-  margin-top: -300px;
-  background-color: #ff8000; /* สีพื้นหลังม่วงตามคลิป */
-  font-family: "Noto Sans";
+  z-index: 1;
 }
 
-.name-product {
-    display: flex;
-    width: fit-content;
-    overflow: hidden;
-    font-weight: bolder ;
-    justify-content: flex-start;
-    margin-left: 0px;
-    margin-top: 450px;
-    font-size: 12rem;
-    transform: scaleY(2);
-  -webkit-text-stroke: 3px rgb(0, 0, 0, 0.1);
-  color: transparent;
-      text-transform: uppercase;
-      background-image: linear-gradient(to right, rgb(230, 230, 230, 0.1) 50%, transparent 50%);
-      background-size: 200% 100%;
-      background-position: 100% 0;
-      -webkit-background-clip: text;
-  background-clip: text;
-  transition: background-position 0.5s ease-out;
+.snap-section {
+  width: 100%;
+  scroll-snap-align: start;
+  scroll-snap-stop: always; 
 }
 
-.name-product:hover {
-    background-position: 0 0;
+@keyframes textReveal {
+  0% {
+    opacity: 0;
+    transform: translateX(500px) scaleY(1.5); 
+    filter: blur(0px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0) scaleY(1.5) ;
+    filter: blur(0);
+  }
 }
 
+/* --- Style เดิม --- */
 .style {
-    font-size: 5rem;
-    font-weight: 900;
-    color: rgb(0, 0, 0, 1);
-    position: absolute;
-    margin-left:1000px;
-    margin-top: 80px;
-    transform: scaleY(1.5);
+  font-size: 3.5rem;
+  font-weight: 900;
+  color: rgb(0, 0, 0, 1);
+  position: absolute;
+  top: 25%;
+  left: 15%; 
+  transform: scaleX(1.5);
+  z-index: 5;
+  overflow: hidden; 
+  padding-bottom: 60px; 
+    filter: drop-shadow(-9px 10px 4px rgba(0, 0, 0, 0.2));
 
+}
+
+.style h2 {
+  margin: 0; 
+  animation: textReveal 1s cubic-bezier(0.56, 1, 0.3, 1) forwards;
+  transform-origin: top left;
+  line-height: 1;
+}
+
+.main-viewport[data-page="1"] .style h2 {
+  color: #bfb1a9;
+}
+
+.main-viewport[data-page="3"] .style h2 {
+  color: #fffb00;
 }
 
 .product-wrapper {
-  width: 500px;
-  height: 500px;
   position: absolute;
-  bottom: 170px;
+  top: 50%;
   left: 50%;
-  transform: translateX(-50%);
-  z-index: 1;
+  transform: translate(-50%, -50%);
+  width: 500px;
+  height: 600px;
+  z-index: 10;
+  filter: drop-shadow(-80px 10px 20px rgba(0, 0, 0, 0.5));
   transition: 0.7s;
-  --left: 65px;
-  filter: drop-shadow(-150px 5px 15px rgba(0, 0, 0, 0.6));
 }
 
 .can-image-placeholder {
-  background: url(/images/rorkerlabelcan.png) var(--left),
-    url(/images/mock-up.png);
-  background-size: 150% 72%, auto 100%;
-  width: 620px;
-  aspect-ratio: 2 /2.5;
+  position: absolute;
+  top: 150; left: 100; right: 0; bottom: 0;
+  margin: auto;
+  width: 650px;
+  aspect-ratio: 2 / 2.3;
+  --left: 940px;
+  background-image: 
+      url(/images/rorkerlabelcan.png), 
+      url(/images/mock-up.png);        
+  background-position: 
+      var(--left) center, 
+      center center;
+  background-size: 
+      auto  72%,  
+      auto 100%;  
   background-blend-mode: multiply;
   mask-image: url(/images/mock-up.png);
   mask-size: auto 100%;
-  transition: 1s;
+  mask-repeat: no-repeat;
+  mask-position: center; 
   overflow: hidden;
-  position: absolute;
-  top: 60px;
-  z-index: 9;
-  margin-left: 15px;
+  transition: background-position 1s ease-in-out, background-image 1s;
 }
 
-/* --- ปุ่มกด (วงกลม) --- */
+/* --- เปลี่ยนรูป Label 5 หน้า --- */
+/* หน้า 2 */
+.can-image-placeholder.label-2 {
+  background-image: url(/images/labelsingsep.png), url(/images/mock-up.png);
+  --left: 00px;
+  
+}
+
+/* หน้า 3 */
+.can-image-placeholder.label-3 {
+  background-image: url(/images/rasp.png), url(/images/mock-up.png);
+  --left: -715px;
+}
+
+/* หน้า 4 (ต้องหารูปมาใส่) */
+.can-image-placeholder.label-4 {
+  background-image: url(/images/bluefeez-label.png), url(/images/mock-up.png);
+  --left: -1540px;
+}
+
+/* หน้า 5 (ต้องหารูปมาใส่) */
+.can-image-placeholder.label-5 {
+  background-image: url(/images/cocowave-label.png), url(/images/mock-up.png);
+  --left: -2350px;
+}
+
+/* --- 6. Buttons (Toggle) --- */
 .toggle-btn {
   position: absolute;
-  bottom: 25%; /* ตำแหน่งปุ่มแนวตั้ง */
-  left: 240px; /* ขยับปุ่มออกมาทางขวาของกระป๋องนิดนึง */
-  top: 600px;
-  width: 50px;
-  height: 50px;
+  top: 65%; 
+  left: 52%; 
+  width: 50px; height: 50px;
   border-radius: 50%;
-  background-color: #969696; /* สีชมพู */
-  border: 3px solid #000; /* ขอบดำ */
-  color: #000;
-  font-size: 30px;
-  font-weight: bold;
+  background-color: #969696;
+  border: 3px solid #000;
+  color: #000000;
+  font-size: 30px; font-weight: bold;
   cursor: pointer;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  transition: all 0.3s ease; /* Animation ของปุ่ม */
+  display: flex; justify-content: center; align-items: center;
+  transition: all 0.3s ease;
   z-index: 20;
 }
+.toggle-btn:hover { transform: scale(1.1); background-color: #bdbdbd;}
+.toggle-btn.active { background-color: #ffffff; transform: rotate(45deg); }
 
-.toggle-btn:hover {
-  transform: scale(1.1); /* ขยายเล็กน้อยเมื่อเอาเมาส์ชี้ */
+.toggle-btn2 {
+  position: absolute;
+  top: 35%; 
+  left: 68%;
+  width: 50px; height: 50px;
+  border-radius: 50%;
+  background-color: #969696;
+  border: 3px solid #000;
+  color: #000;
+  font-size: 30px; font-weight: bold;
+  cursor: pointer;
+  display: flex; justify-content: center; align-items: center;
+  transition: all 0.3s ease;
+  z-index: 20;
 }
+.toggle-btn2:hover { transform: scale(1.1); background-color: #bdbdbd;}
+.toggle-btn2.active { background-color: #ffffff; transform: rotate(45deg); }
 
-/* เมื่อปุ่มถูกกด (Active State) */
-.toggle-btn.active {
-  background-color: #ff8000; /* เปลี่ยนสีเมื่อกด (ถ้าต้องการ) */
-  transform: rotate(45deg); /* หมุนเครื่องหมาย + ให้กลายเป็น X */
-}
-
-/* --- ส่วนข้อมูล (Info Panel) --- */
+/* --- 7. Info Panels --- */
+/* Panel ซ้าย */
 .info-panel {
   position: absolute;
-  right: 45%; /* วางไว้ทางซ้ายของกระป๋อง (เริ่มที่หลังกระป๋อง) */
-  top: 40%;
-    text-transform: uppercase;
-
+  right: 55%; /* วางไว้ทางซ้ายของกระป๋อง (เริ่มที่หลังกระป๋อง) */
+  top: 70%;
+  text-transform: uppercase;
   transform: translateY(-50%);
   text-align: left; /* จัดตัวหนังสือชิดขวา */
   color: #000;
   opacity: 0;
   visibility: hidden;
   transform: translate(50px, -50%); /* ดันไปทางขวา (ซ่อนหลังกระป๋อง) */
-  transition: all 0.5s cubic-bezier(0.68, -0.55, 0.27, 1.55); /* Animation เด้งดึ๋ง */
+  transition: all 0.5s cubic-bezier(0.68, -0.55, 0.27, 1.55);
 }
 
-/* เมื่อเปิดข้อมูล (Active State) */
 .info-panel.show {
   opacity: 1;
   visibility: visible;
-  /* ดึงกลับมาตำแหน่งเดิม */
-  transform: translate(-140px, -50%);
-   /* ขยับออกมาทางซ้าย */
+  
+  transform: translate(0px, -50%);
+  
 }
 
-/* ตกแต่งตัวหนังสือ */
 .info-title {
-  margin-top: 850px;
   font-size: 2rem;
   font-weight: 900;
   margin-bottom: 10px;
   text-transform: uppercase;
   letter-spacing: -1px;
-  font-family: "Noto Sans";
 }
-
 .info-list {
-  list-style: none;
-  padding: 0;
-  font-weight: 600;
-  font-family: "Noto Sans";
+  list-style: none; padding: 0; font-weight: 600;
 }
-
 .info-list li {
-  font-size: 1rem;
-  border-bottom: 1px solid #000;
-  padding: 5px 0;
-  margin-bottom: 5px;
+  font-size: 1rem; border-bottom: 1px solid #000; padding: 5px 0;
 }
 
-
-.toggle-btn2 {
-  position: absolute;
-  bottom: 25%; /* ตำแหน่งปุ่มแนวตั้ง */
-  left: 840px; /* ขยับปุ่มออกมาทางขวาของกระป๋องนิดนึง */
-  top: 370px;
-  width: 50px;
-  height: 50px;
-  border-radius: 50%;
-  background-color: #969696; /* สีชมพู */
-  border: 3px solid #000; /* ขอบดำ */
-  color: #000;
-  font-size: 30px;
-  font-weight: bold;
-  cursor: pointer;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  transition: all 0.3s ease; /* Animation ของปุ่ม */
-  z-index: 20;
-}
-
-.toggle-btn2:hover {
-  transform: scale(1.1); /* ขยายเล็กน้อยเมื่อเอาเมาส์ชี้ */
-}
-
-/* เมื่อปุ่มถูกกด (Active State) */
-.toggle-btn2.active {
-  background-color: #ff8000; /* เปลี่ยนสีเมื่อกด (ถ้าต้องการ) */
-  transform: rotate(45deg); /* หมุนเครื่องหมาย + ให้กลายเป็น X */
-}
-
-/* กำหนดค่าเริ่มต้น: ซ่อนไว้ (สูง 0, โปร่งใส) */
+/* Panel ขวา (Scale Bar) */
 .info-panel2 {
   position: absolute;
-  height: 50;
+  top: 46.5%;
+  left: 72%; /* วางขวาของกระป๋อง */
+  transform: translateY(-50%) translateX(-70px);
+  width: 300px;
   opacity: 0;
-  overflow: hidden;
-  transition: all 0.5s ease-in-out;
-  margin-top: 0px; 
-  left: 300px;
-  display: flex;
-  gap: 50px;
-  width: 500px;
-  height: 120px;
-
+  visibility: hidden;
+  transition: all 0.5s cubic-bezier(0.68, -0.55, 0.27, 1.55);
+  z-index: 1;  
+  
 }
 
-/* เมื่อมี class .show: ให้ขยายความสูงออกมา */
+
+
 .info-panel2.show {
-    max-height: 400px;
-    
   opacity: 1;
+  visibility: visible;
+  transform: translateY(-50%) translateX(0px);
+  
 }
 
-/* เพิ่มส่วนนี้เข้าไปสำหรับ ScaleBar */
+/* Scale Bar Components */
 .barContainer {
   position: relative;
-  height: 15px;            /* ความสูงของแท่งกราฟ */
-  width: 100%;             /* ให้ยืดเต็ม div ที่ครอบอยู่ */
-  border: 3px solid rgb(0, 0, 0); /* กรอบสีขาว */
-  box-sizing: border-box;
-  margin-top: 0px;
+  height: 15px; width: 100%;
+  border: 3px solid rgb(0, 0, 0);
   background: transparent;
-  z-index: 999; /* พื้นหลังใส */
+  z-index: 999;
 }
-
 .indicator {
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  width: 10px;             /* ความหนาของขีดดำ */
+  position: absolute; top: 0; bottom: 0; width: 10px;
   background-color: rgb(0, 0, 0);
   transform: translateX(-50%);
   z-index: 999;
-   /* จัดกึ่งกลางให้ตรงค่า % */
 }
-
 .flavor-label {
-  font-weight: bold;
-  text-transform: uppercase; /* เป็นตัวพิมพ์ใหญ่ทั้งหมด */
-  font-size: 16px;
-    font-family: "Noto Sans";
+  font-weight: bold; text-transform: uppercase;
+  font-size: 16px; color: black;
+  flex: 0 0 auto; text-align: right; width: 160px;
+}
+/* Utility classes for labels layout */
+.flavor-label.first { margin-top: -3px; }
+.flavor-label.second { margin-top: 30px; margin-left: -360px; } /* ปรับ margin ตามโครงสร้าง Flex */
+.flavor-label.thrid { margin-top: 60px; margin-left: -360px; }
+.flavor-label.fourth { margin-top: 90px; margin-left: -360px; }
 
-  color: black; /* หรือสีที่คุณต้องการ */
-  flex: 0 0 auto; /* ไม่ต้องยืดหดตามพื้นที่ */
+
+/* =========================================
+   MOBILE RESPONSIVE (Max-Width: 768px)
+   ========================================= */
+@media screen and (max-width: 768px) {
+
+  /* 1. ปรับ Viewport ให้เต็มจอจริงในมือถือ */
+  .main-viewport {
+    margin-top: 0; /* ล้างค่าเดิม */
+    height: 100dvh; /* ใช้ dynamic viewport height ป้องกันปัญหา toolbar ของ browser มือถือ */
+  }
+
+  /* 2. จัดหัวข้อ (Title) ให้อยู่ตรงกลางด้านบน */
+  .style {
+    /* จัดตำแหน่ง */
+    top: 20%; /* ขยับขึ้นอีกนิด (20% อาจจะต่ำไปชนกระป๋อง) */
+    left: 50%;
+    transform: translateX(-50%); /* ดึงกลับมาให้กลาง */
+    
+    /* ขนาด */
+    width: 100%; /* กว้างเต็มจอ */
+    height: auto; /* ★ สำคัญ: ปล่อย Auto อย่า Fix ความสูง */
+    
+    /* การจัดวาง */
+    display: flex; /* ใช้ Flex จัดกลางชัวร์กว่า text-align */
+    justify-content: center;
+    align-items: center;
+    
+    /* ป้องกันการตัดขอบ */
+    overflow: visible; 
+    padding-bottom: 10px;
+    z-index: 20; /* ดันให้ลอยเหนือทุกอย่าง */
+  }
+
+  /* ★ เพิ่มอันนี้เพื่อคุมขนาดตัวหนังสือในมือถือให้สวย */
+  .style h2 {
+    font-size: 10vw; /* ใช้หน่วย vw (Viewport Width) ตัวหนังสือจะใหญ่ตามความกว้างจอ */
+    line-height: 1.2; /* ระยะบรรทัดพอดีๆ */
+    white-space: nowrap; /* ห้ามตัดบรรทัด */
+  }
+  
+  .style h2 {
+    /* ปรับ animation ให้เด้งจากข้างล่างขึ้นมาแทน (เพราะด้านข้างที่แคบ) */
+    transform-origin: center;
+  }
+
+  /* 3. ย่อขนาดกระป๋อง (สำคัญมาก) */
+  /* เราใช้การ Scale แทนการแก้ width/height เพื่อไม่ให้ Sprite Sheet พัง */
+  .product-wrapper {
+    width: 100%;
+    transform: translate(-50%, -50%) scale(0.55); /* ย่อเหลือ 55% */
+    top: 50%; /* จัดกึ่งกลางแนวตั้ง */
+    left: 23.5%;
+    pointer-events: none; /* ให้กดทะลุไปโดนปุ่มได้ง่ายขึ้น */
+  }
+
+  /* 4. จัดตำแหน่งปุ่มกด (Toggle Buttons) ใหม่ */
+  /* ย้ายมาไว้ด้านล่างซ้าย-ขวา เพื่อให้กดง่ายด้วยนิ้วโป้ง */
+  .toggle-btn {
+    top: auto;
+    bottom: 15%; /* อยู่ห่างจากขอบล่าง */
+    left: 15%;   /* ชิดซ้าย */
+    width: 60px; height: 60px; /* เพิ่มขนาดปุ่มนิดหน่อยให้กดง่าย */
+  }
+
+  .toggle-btn2 {
+    top: auto;
+    bottom: 15%; /* อยู่ระดับเดียวกับปุ่มซ้าย */
+    left: auto;  /* ยกเลิกค่า left เดิม */
+    right: 15%;  /* ชิดขวา */
+    width: 60px; height: 60px;
+  }
+
+  /* 5. ปรับ Panel ข้อมูล (Popup) */
+  /* ในมือถือ พื้นที่น้อย ให้โชว์เป็น Popup ตรงกลางจอ พร้อมพื้นหลังทึบ */
+  
+  /* --- Panel ซ้าย (Flavors) --- */
+  .info-panel {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    right: auto;
+    bottom: auto;
+    
+    /* สถานะซ่อน: ย่อเล็กๆ และจาง */
+    transform: translate(-50%, -50%) scale(0.8);
+    
+    width: 80%; /* กว้าง 80% ของจอ */
+    background: rgba(255, 255, 255, 0.75); /* พื้นหลังขาวโปร่งแสง */
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+    text-align: center; /* จัด text กลาง */
+    z-index: 100; /* อยู่บนสุด */
+  }
+
+  .info-panel.show {
+    opacity: 1;
+    visibility: visible;
+    transform: translate(-50%, -50%) scale(1); /* ขยายเต็มเมื่อกด */
+  }
+
+  /* จัด list ใน panel ให้อยู่กลาง */
+  .info-list li {
+    text-align: center;
+    border-bottom: 1px solid #ddd;
+  }
+
+  /* --- Panel ขวา (Stats / ScaleBar) --- */
+  .info-panel2 {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    right: auto; /* ล้างค่าเดิม */
+    
+    /* สถานะซ่อน */
+    transform: translate(-50%, -50%) scale(0.8);
+    width: 85%;
+    background: rgba(255, 255, 255, 0.75);
+    padding: 15px 15px;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+    z-index: 100;
+    
+    /* บังคับ Flex เป็นแนวตั้งและจัดกลาง (Override Inline Style จาก React) */
+    display: flex !important; 
+    flex-direction: column !important;
+    align-items: center !important; 
+    padding-right: 15px !important; /* ล้าง padding ขวาเดิม */
+    gap: 5px !important;
+  }
+
+  .info-panel2.show {
+    opacity: 1;
+    visibility: visible;
+    transform: translate(-50%, -50%) scale(1);
+  }
+
+  /* ปรับแต่ง Scale Bar ในมือถือ */
+  .info-panel2 > div {
+    /* จัด layout ของแต่ละแถวใน stats ให้สวยงาม */
+    width: 100% !important;
+    justify-content: space-between !important; /* ชื่ออยู่ซ้าย บาร์อยู่ขวา */
+  }
+
+  .flavor-label {
+    text-align: left; /* ชิดซ้าย */
+    width: auto;      /* ยกเลิก fix width */
+    font-size: 0.9rem;
+    flex: 1;
+  }
 }
 
-.flavor-label.first {
-  text-align: right; /* ชิดขวาเพื่อให้ชิดกับกราฟ */
-  width: 160px; 
-  margin-left: 0px; 
-  margin-top: -3px;     /* กำหนดความกว้างให้เท่ากันทุกแถว จะได้ตรงกัน */
-}
-
-.flavor-label.second {
-  text-align: right; /* ชิดขวาเพื่อให้ชิดกับกราฟ */
-  width: 160px; 
-  margin-left: -360px; 
-  margin-top: 30px;     /* กำหนดความกว้างให้เท่ากันทุกแถว จะได้ตรงกัน */
-}
-
-.flavor-label.thrid {
-  text-align: right; /* ชิดขวาเพื่อให้ชิดกับกราฟ */
-  width: 160px; 
-  margin-left: -360px; 
-  margin-top: 60px;     /* กำหนดความกว้างให้เท่ากันทุกแถว จะได้ตรงกัน */
-}
-
-.flavor-label.fourth {
-  text-align: right; /* ชิดขวาเพื่อให้ชิดกับกราฟ */
-  width: 160px; 
-  margin-left: -360px; 
-  margin-top: 90px;     /* กำหนดความกว้างให้เท่ากันทุกแถว จะได้ตรงกัน */
+/* =========================================
+   IPHONE SE / SMALL SCREEN FIXES
+   ========================================= */
+@media screen and (max-width: 380px) {
+  .style {
+    font-size: 2rem;
+    top: 5%;
+  }
+  .product-wrapper {
+    transform: translate(-50%, -50%) scale(0.45); /* ย่อกระป๋องลงอีก */
+  }
+  .toggle-btn, .toggle-btn2 {
+    bottom: 10%;
+    width: 45px; height: 45px;
+    font-size: 20px;
+  }
 }
