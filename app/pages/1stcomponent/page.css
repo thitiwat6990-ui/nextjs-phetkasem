@@ -2,7 +2,7 @@ body {
   margin: 0;
   padding: 0;
   overflow: hidden; 
-  font-family: "Noto Sans", sans-serif;
+  font-family: "Noto Sans";
 }
 
 .main-viewport {
@@ -22,6 +22,57 @@ body {
 .main-viewport[data-page="2"] { background-color: #ff5e7e; } /* ชมพู */
 .main-viewport[data-page="3"] { background-color: #00fffb; } /* เขียว */
 .main-viewport[data-page="4"] { background-color: #ffffff; } /* น้ำเงินเข้ม */
+
+.main-viewport[data-page="0"] .info-panel3 {
+  margin-top: 20px;
+  
+}
+
+.main-viewport[data-page="1"] .info-panel {
+  color: #bfb1a9;
+}
+
+.main-viewport[data-page="1"] .info-panel2 {
+  margin-left: -20px;
+}
+
+.main-viewport[data-page='1'] .info-panel3 {
+  color: #bfb1a9;
+}
+.main-viewport[data-page="1"] .flavor-label {
+  color: #bfb1a9;
+}
+
+.main-viewport[data-page="1"] .barContainer {
+  border-color: #bfb1a9;
+}
+.main-viewport[data-page="1"] .indicator {
+  background-color: #bfb1a9;
+}
+
+.main-viewport[data-page="2"] .info-panel3 {
+  margin-top: 0px;
+}
+
+.main-viewport[data-page="2"] .info-panel2 {
+  margin-left: -20px;
+}
+
+.main-viewport[data-page="3"] .info-panel3 {
+  margin-top: 20px;
+}
+
+.main-viewport[data-page="3"] .info-panel2 {
+  margin-left: -20px;
+}
+
+.main-viewport[data-page="4"] .info-panel3 {
+  margin-top: -10px;
+}
+
+.main-viewport[data-page="4"] .info-panel2 {
+  margin-left: -20px;
+}
 
 .fixed-content-layer {
   position: fixed;
@@ -73,7 +124,7 @@ body {
 .style {
   font-size: 3.5rem;
   font-weight: 900;
-  color: rgb(0, 0, 0, 1);
+  color: rgb(0, 0, 0);
   position: absolute;
   top: 25%;
   left: 15%; 
@@ -93,12 +144,11 @@ body {
 }
 
 .main-viewport[data-page="1"] .style h2 {
-  color: #bfb1a9;
+  color: #bfb1a9 ;
 }
 
-.main-viewport[data-page="3"] .style h2 {
-  color: #fffb00;
-}
+
+
 
 .product-wrapper {
   position: absolute;
@@ -200,6 +250,24 @@ body {
 .toggle-btn2:hover { transform: scale(1.1); background-color: #bdbdbd;}
 .toggle-btn2.active { background-color: #ffffff; transform: rotate(45deg); }
 
+.toggle-btn3 {
+  position: absolute;
+  top: 45%; 
+  left: 51%;
+  width: 50px; height: 50px;
+  border-radius: 50%;
+  background-color: #969696;
+  border: 3px solid #000;
+  color: #000;
+  font-size: 30px; font-weight: bold;
+  cursor: pointer;
+  display: flex; justify-content: center; align-items: center;
+  transition: all 0.3s ease;
+  z-index: 20;
+}
+.toggle-btn3:hover { transform: scale(1.1); background-color: #bdbdbd;}
+.toggle-btn3.active { background-color: #ffffff; transform: rotate(45deg); }
+
 /* --- 7. Info Panels --- */
 /* Panel ซ้าย */
 .info-panel {
@@ -209,11 +277,12 @@ body {
   text-transform: uppercase;
   transform: translateY(-50%);
   text-align: left; /* จัดตัวหนังสือชิดขวา */
-  color: #000;
+  color: rgb(0, 0, 0);
   opacity: 0;
   visibility: hidden;
   transform: translate(50px, -50%); /* ดันไปทางขวา (ซ่อนหลังกระป๋อง) */
   transition: all 0.5s cubic-bezier(0.68, -0.55, 0.27, 1.55);
+  filter: drop-shadow(-9px 10px 4px rgba(0, 0, 0, 0.2));
 }
 
 .info-panel.show {
@@ -241,7 +310,7 @@ body {
 /* Panel ขวา (Scale Bar) */
 .info-panel2 {
   position: absolute;
-  top: 46.5%;
+  top: 40.5%;
   left: 72%; /* วางขวาของกระป๋อง */
   transform: translateY(-50%) translateX(-70px);
   width: 300px;
@@ -249,15 +318,36 @@ body {
   visibility: hidden;
   transition: all 0.5s cubic-bezier(0.68, -0.55, 0.27, 1.55);
   z-index: 1;  
-  
+  filter: drop-shadow(-9px 10px 4px rgba(0, 0, 0, 0.2));
 }
-
-
 
 .info-panel2.show {
   opacity: 1;
   visibility: visible;
+  transform: translateY(-50%) translateX(50px);
+  
+}
+
+.info-panel3 {
+  position: absolute;
+  top: 50.5%;
+  left: 72%; /* วางขวาของกระป๋อง */
   transform: translateY(-50%) translateX(0px);
+  opacity: 0;
+  visibility: hidden;
+  transition: all 1s cubic-bezier(0.68, -0.55, 0.27, 1.55);
+  z-index: 1;  
+  color: black;
+  width: 40%;
+  font-size: 1.2rem;
+  font-weight: 600;
+  filter: drop-shadow(-9px 10px 4px rgba(0, 0, 0, 0.2));
+}
+
+.info-panel3.show {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(-50%) translateX(-1000px);
   
 }
 
@@ -303,13 +393,11 @@ body {
     /* จัดตำแหน่ง */
     top: 20%; /* ขยับขึ้นอีกนิด (20% อาจจะต่ำไปชนกระป๋อง) */
     left: 50%;
-    transform: translateX(-50%); /* ดึงกลับมาให้กลาง */
+    transform: translateX(-50%) scaleX(1.5); /* ดึงกลับมาให้กลาง */
     
-    /* ขนาด */
     width: 100%; /* กว้างเต็มจอ */
     height: auto; /* ★ สำคัญ: ปล่อย Auto อย่า Fix ความสูง */
     
-    /* การจัดวาง */
     display: flex; /* ใช้ Flex จัดกลางชัวร์กว่า text-align */
     justify-content: center;
     align-items: center;
@@ -322,7 +410,7 @@ body {
 
   /* ★ เพิ่มอันนี้เพื่อคุมขนาดตัวหนังสือในมือถือให้สวย */
   .style h2 {
-    font-size: 10vw; /* ใช้หน่วย vw (Viewport Width) ตัวหนังสือจะใหญ่ตามความกว้างจอ */
+    font-size: 7vw; /* ใช้หน่วย vw (Viewport Width) ตัวหนังสือจะใหญ่ตามความกว้างจอ */
     line-height: 1.2; /* ระยะบรรทัดพอดีๆ */
     white-space: nowrap; /* ห้ามตัดบรรทัด */
   }
