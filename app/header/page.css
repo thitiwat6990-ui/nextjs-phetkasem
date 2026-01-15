@@ -58,13 +58,18 @@
     display: none;
   }
 
+  .pkslogo {
+  width: 100px;
+  padding-top: 10px;
+}
+
   .desktop-menu-group {
     display: none;
   }
 
   .hamburger-btn {
     display: block;
-    font-size: 40px;
+    font-size: 30px;
     background: none;
     border: none;
     cursor: pointer;
@@ -72,7 +77,9 @@
     left: 20px;
     color: orange;
     top: 20px;
+    
   }
+
 
   .main-header {
     justify-content: center;
@@ -106,6 +113,7 @@
     padding: 10px;
     list-style: none;
     border-bottom: 1.5px solid #eee;
+    padding-left: 20px;
   }
 
   .pkslogo {

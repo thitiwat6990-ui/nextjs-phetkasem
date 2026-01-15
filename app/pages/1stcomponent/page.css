@@ -24,7 +24,7 @@ body {
 .main-viewport[data-page="4"] { background-color: #ffffff; } /* น้ำเงินเข้ม */
 
 .main-viewport[data-page="0"] .info-panel3 {
-  margin-top: 20px;
+  margin-top: -25px;
   
 }
 
@@ -38,6 +38,7 @@ body {
 
 .main-viewport[data-page='1'] .info-panel3 {
   color: #bfb1a9;
+  margin-top: -20px;
 }
 .main-viewport[data-page="1"] .flavor-label {
   color: #bfb1a9;
@@ -51,7 +52,7 @@ body {
 }
 
 .main-viewport[data-page="2"] .info-panel3 {
-  margin-top: 0px;
+  margin-top: -50px;
 }
 
 .main-viewport[data-page="2"] .info-panel2 {
@@ -59,7 +60,7 @@ body {
 }
 
 .main-viewport[data-page="3"] .info-panel3 {
-  margin-top: 20px;
+  margin-top: -20px;
 }
 
 .main-viewport[data-page="3"] .info-panel2 {
@@ -67,7 +68,7 @@ body {
 }
 
 .main-viewport[data-page="4"] .info-panel3 {
-  margin-top: -10px;
+  margin-top: -70px;
 }
 
 .main-viewport[data-page="4"] .info-panel2 {
@@ -126,7 +127,7 @@ body {
   font-weight: 900;
   color: rgb(0, 0, 0);
   position: absolute;
-  top: 25%;
+  top: 20%;
   left: 15%; 
   transform: scaleX(1.5);
   z-index: 5;
@@ -199,6 +200,7 @@ body {
 .can-image-placeholder.label-3 {
   background-image: url(/images/rasp.png), url(/images/mock-up.png);
   --left: -715px;
+  
 }
 
 /* หน้า 4 (ต้องหารูปมาใส่) */
@@ -232,10 +234,12 @@ body {
 .toggle-btn:hover { transform: scale(1.1); background-color: #bdbdbd;}
 .toggle-btn.active { background-color: #ffffff; transform: rotate(45deg); }
 
+/* ในไฟล์ page.css */
+
 .toggle-btn2 {
   position: absolute;
   top: 35%; 
-  left: 68%;
+  left: calc(50% + 200px); 
   width: 50px; height: 50px;
   border-radius: 50%;
   background-color: #969696;
@@ -376,171 +380,348 @@ body {
 .flavor-label.thrid { margin-top: 60px; margin-left: -360px; }
 .flavor-label.fourth { margin-top: 90px; margin-left: -360px; }
 
+.dynamic-image-container {
+  position: absolute;
+  /* จัดตำแหน่งให้อยู่ตรงกลาง หรือจะปรับเป็น top/left อื่นๆ ก็ได้ */
+  top: 80%;
+  left: 18%;
+  transform: translate(-50%, -50%);
+  width: 600px; /* ปรับขนาดรูปตามต้องการ */
+  height: 600px;
+  z-index: 9999; /* เลขน้อยๆ เพื่อให้อยู่หลังกระป๋อง (กระป๋อง = z-index 10) */
+  pointer-events: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.main-viewport[data-page="1"] .dynamic-image-container {
+  margin-left: 30px;
+}
+
+.main-viewport[data-page="2"] .dynamic-image-container {
+  width: 30%;
+  margin-left: 70%;
+}
+
+.main-viewport[data-page="3"] .dynamic-image-container {
+  width: 30%;
+  margin-left: 70%;
+}
+
+.main-viewport[data-page="2"] .fade-in-image {
+  animation: slideInFromRight 1.2s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+  width: 100%; 
+}
+
+.main-viewport[data-page="3"] .fade-in-image {
+  animation: slideInFromLeft 1.2s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+  width: 100%; 
+}
+
+.main-viewport[data-page="4"] .dynamic-image-container {
+  width: 30%;
+
+}
+
+.fade-in-image {
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+  opacity: 0;
+  animation: fadeInImage 1s ease forwards;
+}
+
+
+
+@keyframes fadeInImage {
+  0% { opacity: 0; transform: scale(0.8); }
+  100% { opacity: 1; transform: scale(1); }
+}
+
+
+
+@keyframes slideInFromRight {
+  0% {
+    transform: translateX(100%); /* เริ่มต้น: อยู่นอกจอทางขวา */
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(-220%);    /* สิ้นสุด: กลับมาที่ตำแหน่งเดิม */
+    opacity: 1;
+  }
+}
+
+
+@keyframes slideInFromLeft {
+  0% {
+    transform: translateX(-1000%); /* เริ่มต้น: อยู่นอกจอทางขวา */
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(0%);    /* สิ้นสุด: กลับมาที่ตำแหน่งเดิม */
+    opacity: 1;
+  }
+}
+
 
 /* =========================================
    MOBILE RESPONSIVE (Max-Width: 768px)
-   ========================================= */
+   =
+   ======================================== */
 @media screen and (max-width: 768px) {
 
-  /* 1. ปรับ Viewport ให้เต็มจอจริงในมือถือ */
+  /* --- 1. Viewport & Global Reset --- */
   .main-viewport {
-    margin-top: 0; /* ล้างค่าเดิม */
-    height: 100dvh; /* ใช้ dynamic viewport height ป้องกันปัญหา toolbar ของ browser มือถือ */
+    margin-top: 0; 
+    height: 100dvh; /* เต็มจอจริง */
+    overflow-x: hidden; /* ห้ามเลื่อนซ้ายขวา */
   }
 
-  /* 2. จัดหัวข้อ (Title) ให้อยู่ตรงกลางด้านบน */
+  /* --- 2. Title (หัวข้อ) --- */
   .style {
-    /* จัดตำแหน่ง */
-    top: 20%; /* ขยับขึ้นอีกนิด (20% อาจจะต่ำไปชนกระป๋อง) */
-    left: 50%;
-    transform: translateX(-50%) scaleX(1.5); /* ดึงกลับมาให้กลาง */
-    
-    width: 100%; /* กว้างเต็มจอ */
-    height: auto; /* ★ สำคัญ: ปล่อย Auto อย่า Fix ความสูง */
-    
-    display: flex; /* ใช้ Flex จัดกลางชัวร์กว่า text-align */
+    top: 20%; 
+    left: 0%;
+    transform: translateX(0%) scaleX(1.2); 
+    width: 100%; 
+    height: auto;
+    display: flex; 
     justify-content: center;
     align-items: center;
-    
-    /* ป้องกันการตัดขอบ */
     overflow: visible; 
-    padding-bottom: 10px;
-    z-index: 20; /* ดันให้ลอยเหนือทุกอย่าง */
+    padding-bottom: 0;
+    z-index: 20; 
+    font-size: 2rem;
+    padding-left: 10px;
+    padding-right: 10px;
+
   }
 
-  /* ★ เพิ่มอันนี้เพื่อคุมขนาดตัวหนังสือในมือถือให้สวย */
   .style h2 {
-    font-size: 7vw; /* ใช้หน่วย vw (Viewport Width) ตัวหนังสือจะใหญ่ตามความกว้างจอ */
-    line-height: 1.2; /* ระยะบรรทัดพอดีๆ */
-    white-space: nowrap; /* ห้ามตัดบรรทัด */
+    font-size: 10vw; /* ตัวใหญ่สะใจ */
+    line-height: 1.1; 
+    white-space: nowrap; 
+    transform-origin: center;
+    text-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  }
+
+  /* --- 3. Dynamic Background Image (รูปประกอบพื้นหลัง) --- */
+  .dynamic-image-container {
+    top: 88%; 
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 90vw; 
+    height: auto;
+    z-index: 1;
+    margin: 0 !important; 
+    margin-left: 0 !important;
   }
   
-  .style h2 {
-    /* ปรับ animation ให้เด้งจากข้างล่างขึ้นมาแทน (เพราะด้านข้างที่แคบ) */
-    transform-origin: center;
+  .main-viewport[data-page="1"] .dynamic-image-container {
+    margin-left: 0 !important;
   }
 
-  /* 3. ย่อขนาดกระป๋อง (สำคัญมาก) */
-  /* เราใช้การ Scale แทนการแก้ width/height เพื่อไม่ให้ Sprite Sheet พัง */
-  .product-wrapper {
-    width: 100%;
-    transform: translate(-50%, -50%) scale(0.55); /* ย่อเหลือ 55% */
-    top: 50%; /* จัดกึ่งกลางแนวตั้ง */
-    left: 23.5%;
-    pointer-events: none; /* ให้กดทะลุไปโดนปุ่มได้ง่ายขึ้น */
+.product-wrapper {
+    position: absolute;
+    top: 45%; 
+    left: 50%;
+    transform: translate(-72%, -50%) scale(0.65);
+    margin: 0 !important;
+    padding: 0 !important;
+    
+    width: 500px; /* ยึดความกว้างตาม Desktop ไว้ แล้วให้ scale ย่อเอา */
+    height: 600px;
+    z-index: 10;
+    pointer-events: none;
   }
 
-  /* 4. จัดตำแหน่งปุ่มกด (Toggle Buttons) ใหม่ */
-  /* ย้ายมาไว้ด้านล่างซ้าย-ขวา เพื่อให้กดง่ายด้วยนิ้วโป้ง */
+  .toggle-btn, .toggle-btn2, .toggle-btn3 {
+    width: 45px; height: 45px;
+    font-size: 24px;
+    top: auto; /* ยกเลิกค่า top เดิม */
+    transition: transform 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+  }
+  
+  .toggle-btn:active, .toggle-btn2:active, .toggle-btn3:active {
+    transform: scale(0.9);
+  }
+
   .toggle-btn {
-    top: auto;
-    bottom: 15%; /* อยู่ห่างจากขอบล่าง */
-    left: 15%;   /* ชิดซ้าย */
-    width: 60px; height: 60px; /* เพิ่มขนาดปุ่มนิดหน่อยให้กดง่าย */
+    bottom: 5%; 
+    left: 10%; 
+    top: 90.2%;  
   }
 
   .toggle-btn2 {
-    top: auto;
-    bottom: 15%; /* อยู่ระดับเดียวกับปุ่มซ้าย */
-    left: auto;  /* ยกเลิกค่า left เดิม */
-    right: 15%;  /* ชิดขวา */
-    width: 60px; height: 60px;
+    bottom: 5%; 
+    left: 80%;  
+    
   }
-
-  /* 5. ปรับ Panel ข้อมูล (Popup) */
-  /* ในมือถือ พื้นที่น้อย ให้โชว์เป็น Popup ตรงกลางจอ พร้อมพื้นหลังทึบ */
   
-  /* --- Panel ซ้าย (Flavors) --- */
-  .info-panel {
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    right: auto;
-    bottom: auto;
+  .toggle-btn3 {
+    bottom: 5%; 
+    left: 45%;   
     
-    /* สถานะซ่อน: ย่อเล็กๆ และจาง */
-    transform: translate(-50%, -50%) scale(0.8);
-    
-    width: 80%; /* กว้าง 80% ของจอ */
-    background: rgba(255, 255, 255, 0.75); /* พื้นหลังขาวโปร่งแสง */
-    padding: 20px;
-    border-radius: 15px;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
-    text-align: center; /* จัด text กลาง */
-    z-index: 100; /* อยู่บนสุด */
   }
 
-  .info-panel.show {
+
+  
+  /* สไตล์พื้นฐานของ Popup */
+  .info-panel, .info-panel2, .info-panel3 {
+    position: fixed;
+    top: 50%; left: 50%;
+    right: auto; bottom: auto;
+    
+    width: 85%;
+    max-width: 340px;
+    
+    /* Glassmorphism Effect */
+    background: rgba(255, 255, 255, 0.80);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    
+    padding: 25px 20px;
+    border-radius: 20px;
+    box-shadow: 0 20px 50px rgba(0,0,0,0.3);
+    z-index: 1000;
+    
+    /* Reset text styles for readability on popup */
+    text-align: center;
+    color: #333 !important; /* บังคับสีดำให้อ่านง่าย */
+    
+    /* Animation State: Hidden */
+    opacity: 0;
+    visibility: hidden;
+    transform: translate(-50%, -50%) scale(0.8) translateY(20px);
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  }
+
+  /* Show State */
+  .info-panel.show, 
+  .info-panel2.show, 
+  .info-panel3.show {
     opacity: 1;
     visibility: visible;
-    transform: translate(-50%, -50%) scale(1); /* ขยายเต็มเมื่อกด */
+    transform: translate(-50%, -50%) scale(1) translateY(0);
   }
 
-  /* จัด list ใน panel ให้อยู่กลาง */
+  /* -- ปรับแต่งไส้ในของแต่ละ Panel -- */
+  
+  /* Panel 1 (List) */
   .info-list li {
     text-align: center;
-    border-bottom: 1px solid #ddd;
+    border-bottom: 1px solid #eee;
+    padding: 8px 0;
+    font-size: 1.1rem;
+    color: #333;
   }
+  .info-panel .info-title { color: #000; }
 
-  /* --- Panel ขวา (Stats / ScaleBar) --- */
+  /* Panel 2 (Stats) */
   .info-panel2 {
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    right: auto; /* ล้างค่าเดิม */
-    
-    /* สถานะซ่อน */
-    transform: translate(-50%, -50%) scale(0.8);
-    width: 85%;
-    background: rgba(255, 255, 255, 0.75);
-    padding: 15px 15px;
-    border-radius: 15px;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
-    z-index: 100;
-    
-    /* บังคับ Flex เป็นแนวตั้งและจัดกลาง (Override Inline Style จาก React) */
+    /* Override flex styling from desktop */
     display: flex !important; 
     flex-direction: column !important;
     align-items: center !important; 
-    padding-right: 15px !important; /* ล้าง padding ขวาเดิม */
-    gap: 5px !important;
+    padding-right: 20px !important; /* ล้าง padding ขวา */
+    margin-left: 0 !important; /* ล้าง margin */
+    gap: 10px !important;
   }
-
-  .info-panel2.show {
-    opacity: 1;
-    visibility: visible;
-    transform: translate(-50%, -50%) scale(1);
-  }
-
-  /* ปรับแต่ง Scale Bar ในมือถือ */
+  
   .info-panel2 > div {
-    /* จัด layout ของแต่ละแถวใน stats ให้สวยงาม */
     width: 100% !important;
-    justify-content: space-between !important; /* ชื่ออยู่ซ้าย บาร์อยู่ขวา */
+    justify-content: space-between !important; 
+    gap: 10px !important;
   }
 
   .flavor-label {
-    text-align: left; /* ชิดซ้าย */
-    width: auto;      /* ยกเลิก fix width */
+    text-align: left; 
     font-size: 0.9rem;
+    color: #333 !important;
     flex: 1;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  
+  /* บังคับสีตัว Indicator ในมือถือให้อ่านง่าย */
+  .barContainer { border-color: #333 !important; }
+  .indicator { background-color: #333 !important; }
+
+  /* Panel 3 (Story) */
+  .info-panel3 {
+    font-size: 1rem;
+    line-height: 1.6;
+    margin-top: 0 !important; /* ล้าง margin */
+  }
+  .info-panel3 .info-title { color: #000; }
+  .description-text { color: #555 !important; }
+
+  .main-viewport[data-page="2"] .fade-in-image {
+  animation: slideInFromRight 1.2s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+  width: 100%; 
+
+}
+
+  .main-viewport[data-page="3"] .fade-in-image {
+  animation: slideInFromLeft 1.2s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+  width: 100%; 
+
+}
+
+  .main-viewport[data-page="2"] .dynamic-image-container {
+  width: 70%;
+  margin-left: 70%;
+}
+
+  .main-viewport[data-page="3"] .dynamic-image-container {
+  width: 55%;
+  
+}
+
+  .main-viewport[data-page="4"] .dynamic-image-container {
+  width: 60%;
+  margin-left: 100%;
+}
+
+  @keyframes slideInFromRight {
+  0% {
+    transform: translateX(1000%); /* เริ่มต้น: อยู่นอกจอทางขวา */
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(-30%);    /* สิ้นสุด: กลับมาที่ตำแหน่งเดิม */
+    opacity: 1;
   }
 }
 
-/* =========================================
-   IPHONE SE / SMALL SCREEN FIXES
-   ========================================= */
-@media screen and (max-width: 380px) {
-  .style {
-    font-size: 2rem;
-    top: 5%;
+  @keyframes slideInFromLeft {
+  0% {
+    transform: translateX(-1000%); /* เริ่มต้น: อยู่นอกจอทางขวา */
+    opacity: 0;
   }
-  .product-wrapper {
-    transform: translate(-50%, -50%) scale(0.45); /* ย่อกระป๋องลงอีก */
-  }
-  .toggle-btn, .toggle-btn2 {
-    bottom: 10%;
-    width: 45px; height: 45px;
-    font-size: 20px;
+  100% {
+    transform: translateX(10%);    /* สิ้นสุด: กลับมาที่ตำแหน่งเดิม */
+    opacity: 1;
   }
 }
+}
+
+/* =========================================
+   SMALL SCREEN FIXES (iPhone SE / Fold)
+   ========================================= */
+@media screen and (max-width: 380px) {
+  .style h2 { font-size: 3rem; }
+  .product-wrapper { transform: translate(-50%, -50%) scale(0.45); }
+  
+  .toggle-btn, .toggle-btn2 { bottom: 3%; }
+  .toggle-btn3 { bottom: 18%; }
+}
+
+/* =========================================
+   LARGE SCREENS / DESKTOP MONITOR (Min-Width: 1600px)
+   จอใหญ่กว่า MacBook 14" (เช่น 24", 27", 32" หรือ Full HD/4K)
+   ========================================= */
+
+   

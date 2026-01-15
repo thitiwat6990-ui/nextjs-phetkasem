@@ -1,0 +1,73 @@
+/* page.css */
+
+.carouselContainer, .carouselContainer2 {
+  width: 100%;
+  overflow: hidden;
+  background-color: transparent;
+  padding: 20px 0;
+  margin-bottom: 20px;
+}
+
+.carouselContainer2 {
+    margin-top: -30px;
+
+}
+
+/* --- แถวที่ 1 --- */
+.track {
+  display: flex;
+  width: max-content;
+  /* ให้แถว 1 เลื่อนไปทางขวา (สวนทางกับแถว 2) */
+  animation: scrollRight 30s linear infinite;
+}
+
+/* --- แถวที่ 2 --- */
+.track2 {
+  display: flex;
+  width: max-content;
+  /* ให้แถว 2 เลื่อนไปทางซ้าย (ตามที่ขอ) */
+  animation: scrollLeft 30s linear infinite;
+}
+
+/* หยุดเมื่อ Hover */
+.carouselContainer:hover .track,
+.carouselContainer2:hover .track2 {
+  animation-play-state: paused;
+}
+
+/* Style การ์ดและรูปภาพ */
+.card, .card2 {
+  width: 25vw;
+  padding: 0 10px;
+  box-sizing: border-box;
+  cursor: pointer;
+}
+
+.image {
+  width: 100%;
+  height: 250px;
+  object-fit: cover;
+  border-radius: 10px;
+  filter: grayscale(100%);
+  transition: filter 0.3s ease, transform 0.3s ease;
+}
+
+.card:hover .image,
+.card2:hover .image {
+  filter: grayscale(0%);
+  transform: scale(1.05);
+}
+
+/* --- Keyframes --- */
+
+/* เลื่อนไปทางซ้าย (รูปวิ่งจากขวา -> ซ้าย) */
+@keyframes scrollLeft {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+/* เลื่อนไปทางขวา (รูปวิ่งจากซ้าย -> ขวา) */
+@keyframes scrollRight {
+  0% { transform: translateX(-50%); }
+  100% { transform: translateX(0); }
+}

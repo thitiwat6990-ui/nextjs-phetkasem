@@ -18,7 +18,7 @@ interface Product {
   stats: Stat[];
   imageClass: string;
   description: string;
-  imageLabel: string;
+  productImage: string; // ★ แก้จาก imageLabel เป็น productImage เพื่อความชัดเจน
 }
 
 // --- Data ---
@@ -28,6 +28,8 @@ const PRODUCT_DATA: Product[] = [
     title: "MAEW SALID",
     flavors: ["Roasted Rice Aroma", "Smooth Mouthfeel", "Crisp Finish"],
     imageClass: "",
+    // ★ ใส่ Path รูปภาพตรงนี้ (ตรวจสอบว่ามีไฟล์จริงใน public/images/)
+    productImage: "/images/maewsalid.png", 
     stats: [
       { label: "KHAO KHUA THAI", value: 60 },
       { label: "japanese rice", value: 40 },
@@ -36,13 +38,13 @@ const PRODUCT_DATA: Product[] = [
     ],
     description:
       "THE INSPIRATION BEHIND THIS DRINK COMES FROM OUR DESIRE TO CAPTURE THE ESSENCE OF ASIA WHILE HIGHLIGHTING THE FLAVOR OF RICE. THIS LED US TO COMBINE TWO DISTINCT TYPES OF RICE JAPANESE RICE & THAI ROASTED RICE. TOGETHER, THEY CREATE OUR SIGNATURE BLEND, OFFERING A PERFECTLY BALANCED TASTE THAT WE ARE PROUD TO PRESENT.",
-    imageLabel: "",
   },
   {
     id: 1,
     title: "SINGHSAPE",
-    flavors: ["rich cocoa", "roasted malt"],
+    flavors: ["Roasted Malt", "Dark Chocolate", 'Smooth Finish'],
     imageClass: "label-2",
+    productImage: "/images/singhsape.png", // รูปหน้า 2
     stats: [
       { label: "Chocolate", value: 60 },
       { label: "MALTy", value: 80 },
@@ -51,13 +53,13 @@ const PRODUCT_DATA: Product[] = [
     ],
     description:
       "SINGHSAPE IS A DARK BROWN TO ALMOST BLACK BEVERAGE, BORN FROM THE DEPTH OF ROASTED CHOCOLATE MALT. TO ENHANCE ITS RICHNESS, CHOCOLATE IS ADDED AT THE FINISH, LENDING A GENTLE SWEETNESS THAT ELEVATES ITS AROMA. DISCOVER A UNIQUE EXPERIENCE.",
-    imageLabel:''
-    },
+  },
   {
     id: 2,
     title: "RAZZ",
-    flavors: ["fresh berry", "sour kick"],
+    flavors: ["Tangy Raspberry", 'Fruity & Juicy', "sour kick"],
     imageClass: "label-3",
+    productImage: "/images/razzcat.png", // รูปหน้า 3
     stats: [
       { label: "raspBERRY", value: 80 },
       { label: "malty", value: 60 },
@@ -66,13 +68,13 @@ const PRODUCT_DATA: Product[] = [
     ],
     description:
       "RAZZ” IS A FRUITY DRINK ANCHORED BY RASPBERRY FOR ITS AROMA, FLAVOR AND COLOR. IT’S NATURALLY SWEET WITH A GENTLE TART SNAP. LIGHT, REFRESHING AND EASY TO SIP. RASPBERRIES PAIR WITH ALMOST ANYTHING, MAKING THEM THE PERFECT HERO INGREDIENT.",
-    imageLabel:''
-    },
+  },
   {
     id: 3,
     title: "BLUEFEEZ",
-    flavors: ["cool mint", "citrus"],
+    flavors: ["Sweet Blueberry", "Cooling Mint", 'smootie sour'],
     imageClass: "label-4",
+    productImage: "/images/catfeez.png", // รูปหน้า 4
     stats: [
       { label: "blueberry", value: 80 },
       { label: "lemon & mint", value: 60 },
@@ -81,13 +83,13 @@ const PRODUCT_DATA: Product[] = [
     ],
     description:
       "PHUKET, A TRUE PARADISE FOR BOTH THAI AND FOREIGN TOURIST, INSTANTLY REMINDS US OF THE REFRESHING SPIRIT OF THE SEA. FROM THIS INSPIRATION. WE CREATED BLUFEEZ A DRINK THAT BLENDS THE SWEET AROMA OF BLUEBERRIES AND THE FRESHNESS OF MINT. EVERY SIP IS A WAVE OF FRESHNESS, BRINGING THE JOY OF THE OCEAN STRAIGHT TO YOU",
-    imageLabel:''
-    },
+  },
   {
     id: 4,
     title: "COCOWAVE",
-    flavors: ["coconut", "vanilla aroma"],
+    flavors: ["coconut", "Tropical Breeze", 'Mellow Sweetness'],
     imageClass: "label-5",
+    productImage: "/images/cococat.png", // รูปหน้า 5
     stats: [
       { label: "COCONUT", value: 60 },
       { label: "tropical", value: 60 },
@@ -96,8 +98,7 @@ const PRODUCT_DATA: Product[] = [
     ],
     description:
       "SOMETIMES WE CRAVE QUIET. SO WE CRAFTED A DRINK FOR REST & SIMPLE SOLITUDE. PICTURE A DESERTED SHORE, ONE COCONUT TREE, A COLD SIP IN HAND. SOFT SAND, GENTLE WAVES, A BREEZE... YOUR LITTLE PARADISE.",
-    imageLabel:''
-    },
+  },
 ];
 
 // --- Sub-Components ---
@@ -109,9 +110,9 @@ const ScaleBar = ({ value }: { value: number }) => (
 
 // --- Main Component ---
 export default function ProductReveal() {
-  const [isLeftPanelOpen, setLeftPanelOpen] = useState(false); // ปุ่มซ้าย
-  const [isRightPanelOpen, setRightPanelOpen] = useState(false); // ปุ่มขวา
-  const [isThirdPanelOpen, setThirdPanelOpen] = useState(false); // ปุ่ม 3 (ซ้ายบน)
+  const [isLeftPanelOpen, setLeftPanelOpen] = useState(false);
+  const [isRightPanelOpen, setRightPanelOpen] = useState(false);
+  const [isThirdPanelOpen, setThirdPanelOpen] = useState(false);
 
   const [scrollIndex, setScrollIndex] = useState(0);
 
@@ -153,12 +154,24 @@ export default function ProductReveal() {
       data-page={scrollIndex}
     >
       <div className="fixed-content-layer">
+        
         {/* Title */}
         <div className="style">
           <h2 key={currentProduct.id} className="animate-text">
             {currentProduct.title}
           </h2>
         </div>
+
+        {/* --- ★ ส่วนแสดงรูปภาพ (เพิ่มใหม่ตรงนี้) --- */}
+        <div className="dynamic-image-container">
+           <img 
+             key={currentProduct.id} 
+             src={currentProduct.productImage} 
+             alt="" 
+             className="fade-in-image"
+           />
+        </div>
+        {/* ---------------------------------------- */}
 
         {/* --- Panel 1: Flavors (ซ้าย) --- */}
         <div className={`info-panel ${isLeftPanelOpen ? "show" : ""}`}>
@@ -170,10 +183,9 @@ export default function ProductReveal() {
           </ul>
         </div>
 
-        {/* --- ★ Panel 3: Description (ส่วนที่ขาดหายไป) --- */}
+        {/* --- Panel 3: Description --- */}
         <div className={`info-panel3 ${isThirdPanelOpen ? "show" : ""}`}>
           <h3 className="info-title">STORY</h3>
-          {/* แสดงข้อมูล Description ตรงนี้ */}
           <p className="description-text">{currentProduct.description}</p>
         </div>
 
@@ -185,7 +197,7 @@ export default function ProductReveal() {
             onClick={() => {
               setLeftPanelOpen(!isLeftPanelOpen);
               setRightPanelOpen(false);
-              setThirdPanelOpen(false); // สั่งปิดปุ่ม 3
+              setThirdPanelOpen(false);
             }}
             aria-label="Toggle Flavors"
           >
@@ -198,7 +210,7 @@ export default function ProductReveal() {
             onClick={() => {
               setRightPanelOpen(!isRightPanelOpen);
               setLeftPanelOpen(false);
-              setThirdPanelOpen(false); // สั่งปิดปุ่ม 3
+              setThirdPanelOpen(false);
             }}
             aria-label="Toggle Stats"
           >
@@ -209,9 +221,9 @@ export default function ProductReveal() {
           <button
             className={`toggle-btn3 ${isThirdPanelOpen ? "active" : ""}`}
             onClick={() => {
-              setThirdPanelOpen(!isThirdPanelOpen); // ★ ต้อง set ตัวเอง (ThirdPanel)
-              setRightPanelOpen(false); // สั่งปิดขวา
-              setLeftPanelOpen(false); // สั่งปิดซ้าย
+              setThirdPanelOpen(!isThirdPanelOpen);
+              setRightPanelOpen(false);
+              setLeftPanelOpen(false);
             }}
             aria-label="Toggle Description"
           >

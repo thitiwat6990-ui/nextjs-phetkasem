@@ -1,6 +1,6 @@
 .overlay {
   position: absolute;
-
+  justify-content: center;
   width: 90%;
   height: 500px;
   margin-left: 70px;
@@ -23,6 +23,8 @@
   pointer-events: none;
   margin-top: -300px;
 }
+
+
 
 .enjoy {
   font-size: 3rem;
@@ -57,12 +59,12 @@
   }
 
   .overlay::before {
-    display: none;
+    display: absolute;
     overflow: hidden;
     position: absolute;
     top: 335;
     left: 30;
-    width: 350px;
+    width: 87%;
     height: 430px;
   }
 
@@ -92,3 +94,4 @@
     display: none;
   }
 }
+
