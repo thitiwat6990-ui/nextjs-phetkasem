@@ -2,17 +2,20 @@
 
 import { useState } from "react";
 import "./page.css";
+import { FaLine, FaFacebook, FaInstagram, FaMapMarkerAlt} from "react-icons/fa";
+
 
 export default function Header() {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
     <nav className="sticky-nav">
+      
       <div className="main-header">
         {/* --- ส่วน Desktop (คงเดิม) --- */}
         <div className="desktop-menu-group">
           <a href=' / '>HOME</a>
-          <a href='./pages'>PRODUCT</a>
+          <a href='./products'>PRODUCT</a>
         </div>
 
         <div>
@@ -42,10 +45,10 @@ export default function Header() {
             <a href=" / " className="active-link">HOME</a>
           </li>
           <li>
-            <a href='./pages'>PRODUCT</a>
+            <a href='./products'>PRODUCT</a>
           </li>
           <li>
-            <a href='./galley'>GALLERY</a>
+            <a href='./gallery'>GALLERY</a>
           </li>
           <li>
             <a href='#'>NEWS</a>
@@ -56,15 +59,12 @@ export default function Header() {
       {/* --- ส่วน Logo Contact (คงเดิม) --- */}
       <div className="logo-contact">
         <a href="https://www.instagram.com/phetkasembrewing/" target="_blank">
-          <img
-            src="/images/iglogo.png"
-            style={{ width: "25px", marginTop: "2px" }}
-            alt="Instagram"
-          />
+          <FaInstagram className='svg2'></FaInstagram>
         </a>
         <a href="https://www.facebook.com/phetkasembrewing " target="_blank">
-          <img src="/images/fblogo.png" style={{ width: "12px" }} alt="Facebook" />
+        <FaFacebook className='svg2'></FaFacebook>
         </a>
+        
       </div>
     </nav>
   );

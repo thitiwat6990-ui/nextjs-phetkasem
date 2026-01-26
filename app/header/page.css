@@ -26,6 +26,7 @@
 .main-header a:hover {
   color: rgb(146, 146, 146);
   cursor: pointer;
+ 
 }
 
 .logo-contact {
@@ -52,6 +53,20 @@
   display: none;
   z-index: 2;
 }
+
+.svg2 {
+    color: black;
+    width: 28px;
+    height: auto;
+
+}
+
+.svg2:hover {
+  color: rgb(146, 146, 146);
+  cursor: pointer;
+}
+
+
 
 @media (max-width: 768px) {
   .logo-contact {

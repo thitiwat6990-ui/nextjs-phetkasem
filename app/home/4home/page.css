@@ -11,7 +11,7 @@
   -webkit-background-clip: text;
   color: transparent;
   z-index: 999;
-  font-family: 'Noto Sans';
+  font-family: "Noto Sans";
 }
 
 .banner {
@@ -111,14 +111,14 @@
   top: 400px;
   object-fit: contain;
   max-height: 80vh;
-  /* filter: blur(30px) ;
-  opacity: 0.7; */
+  filter: blur(12px) ;
+  opacity: 0.6;
   
 }
-.banner-sing .singsep:hover {
+/* .banner-sing .singsep:hover {
   --left: -820px;
   transform: translateX(0%) translateY(-120px);
-}
+} */
 
 .banner-razz {
   position: relative;
@@ -152,13 +152,13 @@
   top: 400px;
   object-fit: contain;
   max-height: 80vh;
-  /* filter: blur(30px) ;
-  opacity: 0.7; */
+  filter: blur(12px) ;
+  opacity: 0.6;
 }
-.banner-razz .razz:hover {
+/* .banner-razz .razz:hover {
   --left: -740px;
   transform: translateX(-50%) translateY(-120px);
-}
+} */
 
 .banner-bluefeez {
   position: relative;
@@ -193,13 +193,13 @@
   top: 400px;
   object-fit: contain;
   max-height: 80vh;
-  /* filter: blur(30px) ;
-  opacity: 0.7; */
+  filter: blur(12px) ;
+  opacity: 0.6;
 }
-.banner-bluefeez .bluefeez:hover {
+/* .banner-bluefeez .bluefeez:hover {
   --left: -740px;
   transform: translateX(-50%) translateY(-120px);
-}
+} */
 
 .banner-coco {
   position: relative;
@@ -234,13 +234,13 @@
   top: -100px;
   object-fit: contain;
   max-height: 80vh;
-  /* filter: blur(30px) ;
-  opacity: 0.7; */
+  filter: blur(12px) ;
+  opacity: 0.6;
 }
-.banner-coco .coco:hover {
+/* .banner-coco .coco:hover {
   --left: -742px;
   transform: translateX(-50%) translateY(-120px);
-}
+} */
 
 .sunnero {
   font-size: 1rem;
@@ -250,9 +250,85 @@
   z-index: 999;
   text-align: center;
   margin-top: 250px;
-  font-family: 'Georgia", serif';
+  font-family: "Noto Sans";
   text-transform: uppercase;
   margin-left: 0px;
+}
+
+.coming {
+  position: absolute;
+  margin-top: -2%;
+  left: 12.2%;
+  transform: translate(-50%, -50%);
+  background-color: #F47920; 
+  color: rgb(255, 255, 255);
+  border: 2px solid black;
+  font-weight: bold;
+  font-size: 1.2rem;
+  padding: 8px 22px;
+  text-transform: uppercase;
+  z-index: 99;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+  white-space: nowrap;
+  width: 190px;
+  font-family: "Noto Sans";
+}
+
+.coming2 {
+  position: absolute;
+  margin-top: -2%;
+  left: 31.3%;
+  transform: translate(-50%, -50%);
+  background-color: #F47920; 
+  color: rgb(255, 255, 255);
+  border: 2px solid black;
+  font-weight: bold;
+  font-size: 1.2rem;
+  padding: 8px 23px;
+  text-transform: uppercase;
+  z-index: 99;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+  white-space: nowrap;
+  width: 190px;
+  font-family: "Noto Sans";
+}
+
+.coming3 {
+  position: absolute;
+  margin-top: -2%;
+  left: 68.5%;
+  transform: translate(-50%, -50%);
+  background-color: #F47920; 
+  color: rgb(255, 255, 255);
+  border: 2px solid black;
+  font-weight: bold;
+  font-size: 1.2rem;
+  padding: 8px 23px;
+  text-transform: uppercase;
+  z-index: 99;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+  white-space: nowrap;
+  width: 190px;
+  font-family: "Noto Sans";
+}
+
+.coming4 {
+  position: absolute;
+  margin-top: -2%;
+  left: 87.6%;
+  transform: translate(-50%, -50%);
+  background-color: #F47920; 
+  color: rgb(255, 255, 255);
+  border: 2px solid black;
+  font-weight: bold;
+  font-size: 1.2rem;
+  padding: 8px 23px;
+  text-transform: uppercase;
+  z-index: 99;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+  white-space: nowrap;
+  width: 190px;
+  font-family: "Noto Sans";
 }
 
 
@@ -326,4 +402,18 @@
   .coming-soon4{
     display: none;
   }
+  
+  .coming{
+    display: none;
+  }
+  .coming2{
+    display: none;
+  }
+  .coming3{
+    display: none;
+  }
+  .coming4{
+    display: none;
+  }
+  
 }

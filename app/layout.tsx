@@ -28,10 +28,13 @@ export default function RootLayout({
     <html>
       
       <body>
+        
         <Header/>
         {children}
         {/* <Footer/> */}
+        
       </body>
+      
     </html>
   );
 }

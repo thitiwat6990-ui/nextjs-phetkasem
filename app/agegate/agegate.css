@@ -1,0 +1,42 @@
+/* components/AgeGate.module.css */
+
+.overlay {
+  /* หัวใจสำคัญ: ต้องเป็น fixed เท่านั้น */
+  position: fixed; 
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  
+  /* สีดำทึบ 95% */
+  background-color: rgba(0, 0, 0, 0.95); 
+  
+  /* จัดให้อยู่ตรงกลางจอเสมอ */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  
+  /* ค่า Z-index ต้องสูงที่สุดในเว็บ เพื่อทับ Header (Header ปกติมักจะ 10-100) */
+  z-index: 99999; 
+  
+  backdrop-filter: blur(8px);
+}
+
+.modal {
+  background-color: #1a1a1a;
+  padding: 40px;
+  border-radius: 12px;
+  text-align: center;
+  border: 1px solid #333;
+  width: 90%;
+  max-width: 400px;
+  color: white;
+  box-shadow: 0 20px 50px rgba(0,0,0,0.8);
+}
+
+/* ... Style ปุ่มต่างๆ เหมือนเดิม ... */
+.logo { font-size: 24px; font-weight: bold; color: #f0c14b; margin-bottom: 20px; }
+.text { margin-bottom: 24px; color: #ccc; line-height: 1.6; }
+.btnGroup { display: flex; gap: 10px; justify-content: center; }
+.btnYes { background: #f0c14b; border: none; padding: 10px 30px; border-radius: 4px; font-weight: bold; cursor: pointer; }
+.btnNo { background: transparent; border: 1px solid #555; color: #fff; padding: 10px 30px; border-radius: 4px; cursor: pointer; }

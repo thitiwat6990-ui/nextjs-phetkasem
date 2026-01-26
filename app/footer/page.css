@@ -1,7 +1,7 @@
 .footer-container {
     background-color: #1a283f;
     margin-top: 26px;
-      font-family: 'Noto Sans';
+    font-family: "Noto Sans";
     letter-spacing: 2px;
 }
 
@@ -9,6 +9,7 @@
     display: flex;
     position: relative;
     justify-content: center;
+    
 }
 .pks-brewing {
     font-size: 28px;

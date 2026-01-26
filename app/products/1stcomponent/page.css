@@ -1,0 +1,727 @@
+body {
+  margin: 0;
+  padding: 0;
+  overflow: hidden; 
+  font-family: "Noto Sans";
+}
+
+.main-viewport {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  overflow-y: scroll; 
+  scroll-snap-type: y mandatory; 
+  scroll-behavior: smooth;
+  background-color: #ffffff;
+  transition: background-color 0.8s ease;
+  margin-top: -150px;
+}
+
+.main-viewport[data-page="0"] { background-color: #ff8000; } /* ส้ม */
+.main-viewport[data-page="1"] { background-color: #2a180d; } /* น้ำตาล */
+.main-viewport[data-page="2"] { background-color: #ff5e7e; } /* ชมพู */
+.main-viewport[data-page="3"] { background-color: #00fffb; } /* เขียว */
+.main-viewport[data-page="4"] { background-color: #ffffff; } /* น้ำเงินเข้ม */
+
+.main-viewport[data-page="0"] .info-panel3 {
+  margin-top: -25px;
+  
+}
+
+.main-viewport[data-page="1"] .info-panel {
+  color: #bfb1a9;
+}
+
+.main-viewport[data-page="1"] .info-panel2 {
+  margin-left: -20px;
+}
+
+.main-viewport[data-page='1'] .info-panel3 {
+  color: #bfb1a9;
+  margin-top: -20px;
+}
+.main-viewport[data-page="1"] .flavor-label {
+  color: #bfb1a9;
+}
+
+.main-viewport[data-page="1"] .barContainer {
+  border-color: #bfb1a9;
+}
+.main-viewport[data-page="1"] .indicator {
+  background-color: #bfb1a9;
+}
+
+.main-viewport[data-page="2"] .info-panel3 {
+  margin-top: -50px;
+}
+
+.main-viewport[data-page="2"] .info-panel2 {
+  margin-left: -20px;
+}
+
+.main-viewport[data-page="3"] .info-panel3 {
+  margin-top: -20px;
+}
+
+.main-viewport[data-page="3"] .info-panel2 {
+  margin-left: -20px;
+}
+
+.main-viewport[data-page="4"] .info-panel3 {
+  margin-top: -70px;
+}
+
+.main-viewport[data-page="4"] .info-panel2 {
+  margin-left: -20px;
+}
+
+.fixed-content-layer {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  pointer-events: none; 
+  z-index: 10;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.fixed-content-layer button,
+.toggle-btn, 
+.toggle-btn2 {
+  pointer-events: auto;
+}
+
+.scroll-track {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1;
+}
+
+.snap-section {
+  width: 100%;
+  scroll-snap-align: start;
+  scroll-snap-stop: always; 
+}
+
+@keyframes textReveal {
+  0% {
+    opacity: 0;
+    transform: translateX(500px) scaleY(1.5); 
+    filter: blur(0px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0) scaleY(1.5) ;
+    filter: blur(0);
+  }
+}
+
+/* --- Style เดิม --- */
+.style {
+  font-size: 3.5rem;
+  font-weight: 900;
+  color: rgb(0, 0, 0);
+  position: absolute;
+  top: 20%;
+  left: 15%; 
+  transform: scaleX(1.5);
+  z-index: 5;
+  overflow: hidden; 
+  padding-bottom: 60px; 
+    filter: drop-shadow(-9px 10px 4px rgba(0, 0, 0, 0.2));
+
+}
+
+.style h2 {
+  margin: 0; 
+  animation: textReveal 1s cubic-bezier(0.56, 1, 0.3, 1) forwards;
+  transform-origin: top left;
+  line-height: 1;
+}
+
+.main-viewport[data-page="1"] .style h2 {
+  color: #bfb1a9 ;
+}
+
+
+
+
+.product-wrapper {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 500px;
+  height: 600px;
+  z-index: 10;
+  filter: drop-shadow(-80px 10px 20px rgba(0, 0, 0, 0.5));
+  transition: 0.7s;
+}
+
+.can-image-placeholder {
+  position: absolute;
+  top: 150; left: 100; right: 0; bottom: 0;
+  margin: auto;
+  width: 650px;
+  aspect-ratio: 2 / 2.3;
+  --left: 940px;
+  background-image: 
+      url(/images/rorkerlabelcan.png), 
+      url(/images/mock-up.png);        
+  background-position: 
+      var(--left) center, 
+      center center;
+  background-size: 
+      auto  72%,  
+      auto 100%;  
+  background-blend-mode: multiply;
+  mask-image: url(/images/mock-up.png);
+  mask-size: auto 100%;
+  mask-repeat: no-repeat;
+  mask-position: center; 
+  overflow: hidden;
+  transition: background-position 1s ease-in-out, background-image 1s;
+}
+
+/* --- เปลี่ยนรูป Label 5 หน้า --- */
+/* หน้า 2 */
+.can-image-placeholder.label-2 {
+  background-image: url(/images/labelsingsep.png), url(/images/mock-up.png);
+  --left: 00px;
+  
+}
+
+/* หน้า 3 */
+.can-image-placeholder.label-3 {
+  background-image: url(/images/rasp.png), url(/images/mock-up.png);
+  --left: -715px;
+  
+}
+
+/* หน้า 4 (ต้องหารูปมาใส่) */
+.can-image-placeholder.label-4 {
+  background-image: url(/images/bluefeez-label.png), url(/images/mock-up.png);
+  --left: -1540px;
+}
+
+/* หน้า 5 (ต้องหารูปมาใส่) */
+.can-image-placeholder.label-5 {
+  background-image: url(/images/cocowave-label.png), url(/images/mock-up.png);
+  --left: -2350px;
+}
+
+/* --- 6. Buttons (Toggle) --- */
+.toggle-btn {
+  position: absolute;
+  top: 65%; 
+  left: 52%; 
+  width: 50px; height: 50px;
+  border-radius: 50%;
+  background-color: #969696;
+  border: 3px solid #000;
+  color: #000000;
+  font-size: 30px; font-weight: bold;
+  cursor: pointer;
+  display: flex; justify-content: center; align-items: center;
+  transition: all 0.3s ease;
+  z-index: 20;
+}
+.toggle-btn:hover { transform: scale(1.1); background-color: #bdbdbd;}
+.toggle-btn.active { background-color: #ffffff; transform: rotate(45deg); }
+
+/* ในไฟล์ page.css */
+
+.toggle-btn2 {
+  position: absolute;
+  top: 35%; 
+  left: calc(50% + 200px); 
+  width: 50px; height: 50px;
+  border-radius: 50%;
+  background-color: #969696;
+  border: 3px solid #000;
+  color: #000;
+  font-size: 30px; font-weight: bold;
+  cursor: pointer;
+  display: flex; justify-content: center; align-items: center;
+  transition: all 0.3s ease;
+  z-index: 20;
+}
+.toggle-btn2:hover { transform: scale(1.1); background-color: #bdbdbd;}
+.toggle-btn2.active { background-color: #ffffff; transform: rotate(45deg); }
+
+.toggle-btn3 {
+  position: absolute;
+  top: 45%; 
+  left: 51%;
+  width: 50px; height: 50px;
+  border-radius: 50%;
+  background-color: #969696;
+  border: 3px solid #000;
+  color: #000;
+  font-size: 30px; font-weight: bold;
+  cursor: pointer;
+  display: flex; justify-content: center; align-items: center;
+  transition: all 0.3s ease;
+  z-index: 20;
+}
+.toggle-btn3:hover { transform: scale(1.1); background-color: #bdbdbd;}
+.toggle-btn3.active { background-color: #ffffff; transform: rotate(45deg); }
+
+/* --- 7. Info Panels --- */
+/* Panel ซ้าย */
+.info-panel {
+  position: absolute;
+  right: 55%; /* วางไว้ทางซ้ายของกระป๋อง (เริ่มที่หลังกระป๋อง) */
+  top: 70%;
+  text-transform: uppercase;
+  transform: translateY(-50%);
+  text-align: left; /* จัดตัวหนังสือชิดขวา */
+  color: rgb(0, 0, 0);
+  opacity: 0;
+  visibility: hidden;
+  transform: translate(50px, -50%); /* ดันไปทางขวา (ซ่อนหลังกระป๋อง) */
+  transition: all 0.5s cubic-bezier(0.68, -0.55, 0.27, 1.55);
+  filter: drop-shadow(-9px 10px 4px rgba(0, 0, 0, 0.2));
+}
+
+.info-panel.show {
+  opacity: 1;
+  visibility: visible;
+  
+  transform: translate(0px, -50%);
+  
+}
+
+.info-title {
+  font-size: 2rem;
+  font-weight: 900;
+  margin-bottom: 10px;
+  text-transform: uppercase;
+  letter-spacing: -1px;
+}
+.info-list {
+  list-style: none; padding: 0; font-weight: 600;
+}
+.info-list li {
+  font-size: 1rem; border-bottom: 1px solid #000; padding: 5px 0;
+}
+
+/* Panel ขวา (Scale Bar) */
+.info-panel2 {
+  position: absolute;
+  top: 40.5%;
+  left: 72%; /* วางขวาของกระป๋อง */
+  transform: translateY(-50%) translateX(-70px);
+  width: 300px;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.5s cubic-bezier(0.68, -0.55, 0.27, 1.55);
+  z-index: 1;  
+  filter: drop-shadow(-9px 10px 4px rgba(0, 0, 0, 0.2));
+}
+
+.info-panel2.show {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(-50%) translateX(50px);
+  
+}
+
+.info-panel3 {
+  position: absolute;
+  top: 50.5%;
+  left: 72%; /* วางขวาของกระป๋อง */
+  transform: translateY(-50%) translateX(-900px);
+  opacity: 0;
+  visibility: hidden;
+  transition: all 1s cubic-bezier(0.68, -0.55, 0.27, 1.55);
+  z-index: 1;  
+  color: black;
+  width: 40%;
+  font-size: 1.2rem;
+  font-weight: 600;
+  filter: drop-shadow(-9px 10px 4px rgba(0, 0, 0, 0.2));
+}
+
+.info-panel3.show {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(-50%) translateX(-1000px);
+  
+}
+
+/* Scale Bar Components */
+.barContainer {
+  position: relative;
+  height: 15px; width: 100%;
+  border: 3px solid rgb(0, 0, 0);
+  background: transparent;
+  z-index: 999;
+}
+.indicator {
+  position: absolute; top: 0; bottom: 0; width: 10px;
+  background-color: rgb(0, 0, 0);
+  transform: translateX(-50%);
+  z-index: 999;
+}
+.flavor-label {
+  font-weight: bold; text-transform: uppercase;
+  font-size: 16px; color: black;
+  flex: 0 0 auto; text-align: right; width: 160px;
+}
+/* Utility classes for labels layout */
+.flavor-label.first { margin-top: -3px; }
+.flavor-label.second { margin-top: 30px; margin-left: -360px; } /* ปรับ margin ตามโครงสร้าง Flex */
+.flavor-label.thrid { margin-top: 60px; margin-left: -360px; }
+.flavor-label.fourth { margin-top: 90px; margin-left: -360px; }
+
+.dynamic-image-container {
+  position: absolute;
+  /* จัดตำแหน่งให้อยู่ตรงกลาง หรือจะปรับเป็น top/left อื่นๆ ก็ได้ */
+  top: 80%;
+  left: 18%;
+  transform: translate(-50%, -50%);
+  width: 600px; /* ปรับขนาดรูปตามต้องการ */
+  height: 600px;
+  z-index: 9999; /* เลขน้อยๆ เพื่อให้อยู่หลังกระป๋อง (กระป๋อง = z-index 10) */
+  pointer-events: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.main-viewport[data-page="1"] .dynamic-image-container {
+  margin-left: 30px;
+}
+
+.main-viewport[data-page="2"] .dynamic-image-container {
+  width: 30%;
+  margin-left: 70%;
+}
+
+.main-viewport[data-page="3"] .dynamic-image-container {
+  width: 30%;
+  margin-left: 70%;
+}
+
+.main-viewport[data-page="2"] .fade-in-image {
+  animation: slideInFromRight 1.2s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+  width: 100%; 
+}
+
+.main-viewport[data-page="3"] .fade-in-image {
+  animation: slideInFromLeft 1.2s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+  width: 100%; 
+}
+
+.main-viewport[data-page="4"] .dynamic-image-container {
+  width: 30%;
+
+}
+
+.fade-in-image {
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+  opacity: 0;
+  animation: fadeInImage 1s ease forwards;
+}
+
+
+
+@keyframes fadeInImage {
+  0% { opacity: 0; transform: scale(0.8); }
+  100% { opacity: 1; transform: scale(1); }
+}
+
+
+
+@keyframes slideInFromRight {
+  0% {
+    transform: translateX(100%); /* เริ่มต้น: อยู่นอกจอทางขวา */
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(-220%);    /* สิ้นสุด: กลับมาที่ตำแหน่งเดิม */
+    opacity: 1;
+  }
+}
+
+
+@keyframes slideInFromLeft {
+  0% {
+    transform: translateX(-1000%); /* เริ่มต้น: อยู่นอกจอทางขวา */
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(0%);    /* สิ้นสุด: กลับมาที่ตำแหน่งเดิม */
+    opacity: 1;
+  }
+}
+
+
+/* =========================================
+   MOBILE RESPONSIVE (Max-Width: 768px)
+   =
+   ======================================== */
+@media screen and (max-width: 768px) {
+
+  /* --- 1. Viewport & Global Reset --- */
+  .main-viewport {
+    margin-top: 0; 
+    height: 100dvh; /* เต็มจอจริง */
+    overflow-x: hidden; /* ห้ามเลื่อนซ้ายขวา */
+  }
+
+  /* --- 2. Title (หัวข้อ) --- */
+  .style {
+    top: 20%; 
+    left: 0%;
+    transform: translateX(0%) scaleX(1.2); 
+    width: 100%; 
+    height: auto;
+    display: flex; 
+    justify-content: center;
+    align-items: center;
+    overflow: visible; 
+    padding-bottom: 0;
+    z-index: 20; 
+    font-size: 2rem;
+    padding-left: 10px;
+    padding-right: 10px;
+
+  }
+
+  .style h2 {
+    font-size: 10vw; /* ตัวใหญ่สะใจ */
+    line-height: 1.1; 
+    white-space: nowrap; 
+    transform-origin: center;
+    text-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  }
+
+  /* --- 3. Dynamic Background Image (รูปประกอบพื้นหลัง) --- */
+  .dynamic-image-container {
+    top: 88%; 
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 90vw; 
+    height: auto;
+    z-index: 1;
+    margin: 0 !important; 
+    margin-left: 0 !important;
+  }
+  
+  .main-viewport[data-page="1"] .dynamic-image-container {
+    margin-left: 0 !important;
+  }
+
+.product-wrapper {
+    position: absolute;
+    top: 45%; 
+    left: 50%;
+    transform: translate(-72%, -50%) scale(0.65);
+    margin: 0 !important;
+    padding: 0 !important;
+    
+    width: 500px; /* ยึดความกว้างตาม Desktop ไว้ แล้วให้ scale ย่อเอา */
+    height: 600px;
+    z-index: 10;
+    pointer-events: none;
+  }
+
+  .toggle-btn, .toggle-btn2, .toggle-btn3 {
+    width: 45px; height: 45px;
+    font-size: 24px;
+    top: auto; /* ยกเลิกค่า top เดิม */
+    transition: transform 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+  }
+  
+  .toggle-btn:active, .toggle-btn2:active, .toggle-btn3:active {
+    transform: scale(0.9);
+  }
+
+  .toggle-btn {
+    bottom: 5%; 
+    left: 10%; 
+    top: 90.2%;  
+  }
+
+  .toggle-btn2 {
+    bottom: 5%; 
+    left: 80%;  
+    
+  }
+  
+  .toggle-btn3 {
+    bottom: 5%; 
+    left: 45%;   
+    
+  }
+
+
+  
+  /* สไตล์พื้นฐานของ Popup */
+  .info-panel, .info-panel2, .info-panel3 {
+    position: fixed;
+    top: 50%; left: 50%;
+    right: auto; bottom: auto;
+    
+    width: 85%;
+    max-width: 340px;
+    
+    /* Glassmorphism Effect */
+    background: rgba(255, 255, 255, 0.80);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    
+    padding: 25px 20px;
+    border-radius: 20px;
+    box-shadow: 0 20px 50px rgba(0,0,0,0.3);
+    z-index: 1000;
+    
+    /* Reset text styles for readability on popup */
+    text-align: center;
+    color: #333 !important; /* บังคับสีดำให้อ่านง่าย */
+    
+    /* Animation State: Hidden */
+    opacity: 0;
+    visibility: hidden;
+    transform: translate(-50%, -50%) scale(0.8) translateY(20px);
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  }
+
+  /* Show State */
+  .info-panel.show, 
+  .info-panel2.show, 
+  .info-panel3.show {
+    opacity: 1;
+    visibility: visible;
+    transform: translate(-50%, -50%) scale(1) translateY(0);
+  }
+
+  /* -- ปรับแต่งไส้ในของแต่ละ Panel -- */
+  
+  /* Panel 1 (List) */
+  .info-list li {
+    text-align: center;
+    border-bottom: 1px solid #eee;
+    padding: 8px 0;
+    font-size: 1.1rem;
+    color: #333;
+  }
+  .info-panel .info-title { color: #000; }
+
+  /* Panel 2 (Stats) */
+  .info-panel2 {
+    /* Override flex styling from desktop */
+    display: flex !important; 
+    flex-direction: column !important;
+    align-items: center !important; 
+    padding-right: 20px !important; /* ล้าง padding ขวา */
+    margin-left: 0 !important; /* ล้าง margin */
+    gap: 10px !important;
+  }
+  
+  .info-panel2 > div {
+    width: 100% !important;
+    justify-content: space-between !important; 
+    gap: 10px !important;
+  }
+
+  .flavor-label {
+    text-align: left; 
+    font-size: 0.9rem;
+    color: #333 !important;
+    flex: 1;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  
+  /* บังคับสีตัว Indicator ในมือถือให้อ่านง่าย */
+  .barContainer { border-color: #333 !important; }
+  .indicator { background-color: #333 !important; }
+
+  /* Panel 3 (Story) */
+  .info-panel3 {
+    font-size: 1rem;
+    line-height: 1.6;
+    margin-top: 0 !important; /* ล้าง margin */
+  }
+  .info-panel3 .info-title { color: #000; }
+  .description-text { color: #555 !important; }
+
+  .main-viewport[data-page="2"] .fade-in-image {
+  animation: slideInFromRight 1.2s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+  width: 100%; 
+
+}
+
+  .main-viewport[data-page="3"] .fade-in-image {
+  animation: slideInFromLeft 1.2s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+  width: 100%; 
+
+}
+
+  .main-viewport[data-page="2"] .dynamic-image-container {
+  width: 70%;
+  margin-left: 70%;
+}
+
+  .main-viewport[data-page="3"] .dynamic-image-container {
+  width: 55%;
+  
+}
+
+  .main-viewport[data-page="4"] .dynamic-image-container {
+  width: 60%;
+  margin-left: 100%;
+}
+
+  @keyframes slideInFromRight {
+  0% {
+    transform: translateX(1000%); /* เริ่มต้น: อยู่นอกจอทางขวา */
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(-30%);    /* สิ้นสุด: กลับมาที่ตำแหน่งเดิม */
+    opacity: 1;
+  }
+}
+
+  @keyframes slideInFromLeft {
+  0% {
+    transform: translateX(-1000%); /* เริ่มต้น: อยู่นอกจอทางขวา */
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(10%);    /* สิ้นสุด: กลับมาที่ตำแหน่งเดิม */
+    opacity: 1;
+  }
+}
+}
+
+/* =========================================
+   SMALL SCREEN FIXES (iPhone SE / Fold)
+   ========================================= */
+@media screen and (max-width: 380px) {
+  .style h2 { font-size: 3rem; }
+  .product-wrapper { transform: translate(-50%, -50%) scale(0.45); }
+  
+  .toggle-btn, .toggle-btn2 { bottom: 3%; }
+  .toggle-btn3 { bottom: 18%; }
+}
+
+/* =========================================
+   LARGE SCREENS / DESKTOP MONITOR (Min-Width: 1600px)
+   จอใหญ่กว่า MacBook 14" (เช่น 24", 27", 32" หรือ Full HD/4K)
+   ========================================= */
+
+   

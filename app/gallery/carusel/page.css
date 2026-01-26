@@ -1,6 +1,6 @@
 /* page.css */
 
-.carouselContainer, .carouselContainer2 {
+.carouselContainer, .carouselContainer2, .carouselContainer3 {
   width: 100%;
   overflow: hidden;
   background-color: transparent;
@@ -8,9 +8,8 @@
   margin-bottom: 20px;
 }
 
-.carouselContainer2 {
+.carouselContainer2, .carouselContainer3 {
     margin-top: -30px;
-
 }
 
 /* --- แถวที่ 1 --- */
@@ -29,14 +28,22 @@
   animation: scrollLeft 30s linear infinite;
 }
 
+.track3 {
+  display: flex;
+  width: max-content;
+  /* ให้แถว 2 เลื่อนไปทางซ้าย (ตามที่ขอ) */
+  animation: scrollRight 30s linear infinite;
+}
+
 /* หยุดเมื่อ Hover */
 .carouselContainer:hover .track,
-.carouselContainer2:hover .track2 {
+.carouselContainer2:hover .track2,
+.carouselContainer3:hover .track3 {
   animation-play-state: paused;
 }
 
 /* Style การ์ดและรูปภาพ */
-.card, .card2 {
+.card, .card2, .card3{
   width: 25vw;
   padding: 0 10px;
   box-sizing: border-box;
@@ -48,12 +55,13 @@
   height: 250px;
   object-fit: cover;
   border-radius: 10px;
-  filter: grayscale(100%);
+  /* filter: grayscale(100%); */
   transition: filter 0.3s ease, transform 0.3s ease;
 }
 
 .card:hover .image,
-.card2:hover .image {
+.card2:hover .image,
+.card3:hover .image {
   filter: grayscale(0%);
   transform: scale(1.05);
 }
@@ -70,4 +78,34 @@
 @keyframes scrollRight {
   0% { transform: translateX(-50%); }
   100% { transform: translateX(0); }
+}
+
+/* ... (โค้ดเดิมของคุณด้านบน) ... */
+
+/* --- Mobile Mode (สำหรับหน้าจอเล็กกว่า 768px) --- */
+@media screen and (max-width: 768px) {
+  
+  /* ปรับความกว้างการ์ด: ให้แสดงประมาณ 2 รูปต่อหน้าจอ (50vw) 
+     เพื่อให้รูปดูใหญ่ขึ้น ไม่เล็กจนมองไม่เห็น */
+  .card, .card2 {
+    width: 50vw; 
+    padding: 0 5px; /* ลดช่องว่างด้านข้างลงหน่อย */
+  }
+
+  /* ปรับความสูงรูป: ลดลงมาหน่อยให้สมส่วนกับมือถือ */
+  .image {
+    height: 180px; /* จากเดิม 250px */
+  }
+
+  /* ปรับระยะห่าง: ลด margin ติดลบลง เพื่อไม่ให้แถวซ้อนกันจนดูแน่นไป */
+  .carouselContainer2 {
+    margin-top: -35px; 
+  }
+  
+  /* (Optional) ถ้าอยากให้เลื่อนเร็วขึ้นหรือช้าลงในมือถือ ปรับตรงนี้ได้ */
+  /*
+  .track, .track2 {
+    animation-duration: 20s;
+  }
+  */
 }
