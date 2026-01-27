@@ -9,7 +9,7 @@
 }
 
 .carouselContainer2, .carouselContainer3 {
-    margin-top: -30px;
+    margin-top: -50px;
 }
 
 /* --- แถวที่ 1 --- */
@@ -35,6 +35,8 @@
   animation: scrollRight 30s linear infinite;
 }
 
+
+
 /* หยุดเมื่อ Hover */
 .carouselContainer:hover .track,
 .carouselContainer2:hover .track2,
@@ -48,6 +50,10 @@
   padding: 0 10px;
   box-sizing: border-box;
   cursor: pointer;
+}
+
+.track2, .track3 {
+  margin-top: 10px;
 }
 
 .image {
@@ -83,29 +89,56 @@
 /* ... (โค้ดเดิมของคุณด้านบน) ... */
 
 /* --- Mobile Mode (สำหรับหน้าจอเล็กกว่า 768px) --- */
+/* --- Mobile Mode (สำหรับหน้าจอเล็กกว่า 768px) --- */
 @media screen and (max-width: 768px) {
-  
-  /* ปรับความกว้างการ์ด: ให้แสดงประมาณ 2 รูปต่อหน้าจอ (50vw) 
-     เพื่อให้รูปดูใหญ่ขึ้น ไม่เล็กจนมองไม่เห็น */
-  .card, .card2 {
-    width: 50vw; 
-    padding: 0 5px; /* ลดช่องว่างด้านข้างลงหน่อย */
+
+  /* 1. จัดการ Container: เปิดให้ใช้นิ้วปัดได้ และซ่อน Scrollbar */
+  .carouselContainer, .carouselContainer2, .carouselContainer3 {
+    overflow-x: auto;              /* เปิดแกน X ให้เลื่อนได้ */
+    overflow-y: hidden;            /* ล็อกแกน Y */
+    scroll-behavior: smooth;       /* เลื่อนแบบนุ่มนวล */
+    -webkit-overflow-scrolling: touch; /* ฟีเจอร์สำคัญสำหรับ iOS ให้ปัดลื่นๆ */
+    
+    /* ระบบ Snap: ให้เวลาปัดแล้วรูปมัน "ดูด" เข้ากลางจอ (เหมือนแอป IG) */
+    scroll-snap-type: x mandatory; 
+    
+    /* ซ่อน Scrollbar (เพื่อให้สวยงาม) */
+    scrollbar-width: none; /* Firefox */
+    -ms-overflow-style: none; /* IE/Edge */
   }
 
-  /* ปรับความสูงรูป: ลดลงมาหน่อยให้สมส่วนกับมือถือ */
+  /* ซ่อน Scrollbar สำหรับ Chrome/Safari */
+  .carouselContainer::-webkit-scrollbar, 
+  .carouselContainer2::-webkit-scrollbar,
+  .carouselContainer3::-webkit-scrollbar {
+    display: none;
+  }
+  
+  /* 2. จัดการ Track: หยุด Animation ทั้งหมด */
+  .track, .track2, .track3 {
+    animation: none !important;    /* สำคัญ: สั่งหยุดวิ่ง */
+    transform: none !important;    /* รีเซ็ตตำแหน่ง ไม่ให้รูปกระโดดไปมา */
+    width: max-content;            /* ให้ความกว้างตามจำนวนรูป */
+  }
+
+  /* 3. จัดการ Card: ปรับขนาดและการจัดวาง */
+  .card, .card2, .card3 {
+    /* แนะนำ: ใช้ 60vw - 70vw เพื่อให้เห็นขอบของรูปถัดไปนิดนึง 
+       User จะได้รู้โดยสัญชาตญาณว่า "มันเลื่อนต่อได้นะ" */
+    width: 65vw; 
+    padding: 0 8px;
+    
+    /* สั่งให้รูปหยุดตรงกึ่งกลางหน้าจอเสมอ */
+    scroll-snap-align: center;
+  }
+
+  /* ปรับความสูงรูป */
   .image {
-    height: 180px; /* จากเดิม 250px */
+    height: 200px; /* ปรับตามความเหมาะสม */
   }
 
-  /* ปรับระยะห่าง: ลด margin ติดลบลง เพื่อไม่ให้แถวซ้อนกันจนดูแน่นไป */
-  .carouselContainer2 {
-    margin-top: -35px; 
+  /* ปรับระยะห่างระหว่างชั้น */
+  .carouselContainer2, .carouselContainer3 {
+    margin-top: -50px; /* ลดการซ้อนทับลงหน่อยในมือถือ จะได้จิ้มง่ายๆ */
   }
-  
-  /* (Optional) ถ้าอยากให้เลื่อนเร็วขึ้นหรือช้าลงในมือถือ ปรับตรงนี้ได้ */
-  /*
-  .track, .track2 {
-    animation-duration: 20s;
-  }
-  */
 }

@@ -577,7 +577,7 @@ body {
     max-width: 340px;
     
     /* Glassmorphism Effect */
-    background: rgba(255, 255, 255, 0.80);
+    background: rgba(255, 255, 255, 1);
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
     

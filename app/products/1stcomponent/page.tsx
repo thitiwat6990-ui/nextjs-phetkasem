@@ -125,6 +125,7 @@ export default function ProductReveal() {
 
   // Reset panels เมื่อเปลี่ยนหน้า
   useEffect(() => {
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     setLeftPanelOpen(false);
     setRightPanelOpen(false);
     setThirdPanelOpen(false);
