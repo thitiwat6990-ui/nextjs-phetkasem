@@ -26,7 +26,7 @@ export default function Header() {
 
         <div className="desktop-menu-group">
           <a href='./gallery'>GALLERY</a>
-          <a>NEWS</a>
+          <a href='./news'>NEWS</a>
         </div>
 
         {/* ปุ่ม Hamburger (เพิ่ม class ให้ icon หมุนได้ถ้าต้องการ) */}
@@ -51,7 +51,7 @@ export default function Header() {
             <a href='./gallery'>GALLERY</a>
           </li>
           <li>
-            <a href='#'>NEWS</a>
+            <a href='./news'>NEWS</a>
           </li>
         </ul>
       </div>
