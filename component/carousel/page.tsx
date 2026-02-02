@@ -59,7 +59,6 @@ export default function Carousel() {
             <div className="carousel-content">
               <h3>{slide.subtitle}</h3>
               <h1>{slide.title}</h1>
-              <button className="cta-button">SEE MORE</button>
             </div>
 
             {/* เงามืดๆ ทับรูปให้อ่านหนังสือออก */}

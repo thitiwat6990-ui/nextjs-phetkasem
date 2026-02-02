@@ -4,7 +4,7 @@
 import React, { useState } from 'react';
 import { X } from 'lucide-react';
 
-// --- 1. แก้ไข Interfaces ---
+// --- 1. Interfaces ---
 interface GalleryItem {
   id: number;
   category: string;
@@ -18,32 +18,30 @@ interface HighlightItem {
   title: string;
   subtitle: string;
   desc: string;
-  image: string; // เพิ่ม image กลับมา (สำหรับใช้เป็น Poster ก่อนวิดีโอเล่น)
-  video: string; // เพิ่ม video
+  image: string; 
+  video: string; 
 }
 
-// --- 2. แก้ไข Mock Data ---
+// --- 2. Mock Data ---
 const HIGHLIGHT_ITEM: HighlightItem = {
   id: 1,
   title: "The Sunshine Pilsner",
   subtitle: "Limited Batch No. 42",
   desc: "Experience the depth of malt, blended with the aromas of Japanese rice and roasted Thai rice, in a can design that is simple yet powerful.",
-  // ใส่รูปปก (Poster)
   image: "https://images.unsplash.com/photo-1571613316887-6f8d5cbf7ef7?q=80&w=1471&auto=format&fit=crop",
-  // ใส่ไฟล์วิดีโอ (ต้องมีไฟล์นี้ในโฟลเดอร์ public/videos/)
   video: '/videos/videobeer.mp4', 
 };
 
 const GALLERY_IMAGES: GalleryItem[] = [
   { id: 1, category: "Product", src: "/images/maew-salid-labelcan.png", title: "Maew Salid", year: "2026" },
-  { id: 2, category: "Vibe", src: "/images/maew-glass.jpg", title: "Put the cat into the glass", year: "2026" },
-  { id: 3, category: "Brewing", src: "/images/maew.jpg", title: "Grain Bill", year: "2026" },
-  { id: 4, category: "Product", src: "/images/maew2.png", title: "Golden Lager", year: "2026" },
+  { id: 2, category: "Product", src: "/images/opening.png", title: "Put the cat into the glass", year: "2026" },
+  { id: 3, category: "Brewing", src: "/images/forward-cat.jpg", title: "Grain Bill", year: "2026" },
+  { id: 4, category: "Vibe", src: "/images/maew.jpg", title: "Golden Lager", year: "2026" },
   { id: 5, category: "Vibe", src: "/images/canmaew-hk.png", title: "Maew Salid in HongKong", year: "2026" },
-  { id: 6, category: "Brewing", src: "https://images.unsplash.com/photo-1567696911980-2eed69a46042?q=80&w=800&auto=format&fit=crop", title: "Hops Selection", year: "2026" },
-  { id: 7, category: "Product", src: "/images/maew3.png", title: "Maew Salid", year: "2026" },
+  { id: 6, category: "Vibe", src: "/images/fridaycat.jpg", title: "Friday Cat", year: "2026" },
+  { id: 7, category: "Vibe", src: "/images/catintheboat.jpg", title: "Razz", year: "2026" },
   { id: 8, category: "Vibe", src: "/images/maew-glass.jpg", title: "Put the cat into the glass", year: "2026" },
-  { id: 9, category: "Brewing", src: "/images/malting.jpg", title: "Grain Bill", year: "2026" },
+  { id: 9, category: "Product", src: "/images/poster-beehern.png", title: "Grain Bill", year: "2026" },
 ];
 
 export default function App() {
@@ -82,24 +80,21 @@ export default function App() {
             onKeyDown={(e) => e.key === 'Enter' && setSelectedImage(HIGHLIGHT_ITEM)}
           >
             <div className="aspect-[4/5] overflow-hidden bg-gray-100 relative">
-              
-              {/* --- 3. เปลี่ยนการแสดงผลเป็น Video --- */}
               <video 
                 autoPlay 
                 loop 
                 muted 
                 playsInline
                 className="w-full h-full object-cover transition-transform duration-[1.5s] ease-out group-hover:scale-105"
-                poster={HIGHLIGHT_ITEM.image} // รูปปกตอนวิดีโอยังไม่โหลด
+                poster={HIGHLIGHT_ITEM.image}
               >
                  <source src={HIGHLIGHT_ITEM.video} type="video/mp4" />
                  Your browser does not support the video tag.
               </video>
-
             </div>
             <div className="absolute -bottom-6 -left-6 bg-white p-6 shadow-xl hidden md:block z-10">
                <p className="text-xs tracking-widest uppercase text-gray-400 font-sans">Launch Date</p>
-               <p className="text-lg font-sans">Oct 20, 2024</p>
+               <p className="text-lg font-sans">Feb 1, 2026</p>
             </div>
           </div>
         </div>
@@ -136,10 +131,12 @@ export default function App() {
               onKeyDown={(e) => e.key === 'Enter' && setSelectedImage(img)}
             >
               <div className="aspect-square overflow-hidden bg-gray-100 mb-6 relative">
+                {/* --- แก้ไขตรงนี้ครับ --- */}
+                {/* เปลี่ยนจาก grayscale เป็น md:grayscale (ให้มีผลเฉพาะจอคอม) */}
                 <img 
                   src={img.src} 
                   alt={img.title}
-                  className="w-full h-full object-cover filter grayscale group-hover:grayscale-0 transition-all duration-700 ease-in-out"
+                  className="w-full h-full object-cover filter md:grayscale md:group-hover:grayscale-0 transition-all duration-700 ease-in-out"
                 />
               </div>
               <div className="flex justify-between items-center border-t border-black/10 pt-4">
@@ -163,7 +160,7 @@ export default function App() {
         <div className="flex justify-center gap-8" style={{marginLeft:'-30px'}}>
           <a href="https://www.instagram.com/phetkasembrewing/" target='_blank' className="text-sm hover:line-through transition-all text-gray-500 hover:text-black">Instagram</a>
           <a href="https://www.facebook.com/phetkasembrewing/ " target='_blank' className="text-sm hover:line-through transition-all text-gray-500 hover:text-black">Facebook</a>
-          <a href="#" className="text-sm hover:line-through transition-all text-gray-500 hover:text-black">Line</a>
+          <a href="https://lin.ee/0fUAVHt" target='_blank' className="text-sm hover:line-through transition-all text-gray-500 hover:text-black">Line</a>
         </div>
       </section>
 
@@ -192,7 +189,6 @@ export default function App() {
             </button>
             
             <div className="max-w-4xl max-h-[80vh] w-full h-full flex items-center justify-center relative" onClick={(e) => e.stopPropagation()}>
-               {/* --- 4. เพิ่ม Logic แสดง Video ใน Lightbox --- */}
                {(selectedImage as any).video ? (
                   <video 
                     controls 
