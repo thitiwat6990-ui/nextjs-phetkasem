@@ -35,13 +35,13 @@ const HIGHLIGHT_ITEM: HighlightItem = {
 const GALLERY_IMAGES: GalleryItem[] = [
   { id: 1, category: "Product", src: "/images/maew-salid-labelcan.png", title: "Maew Salid", year: "2026" },
   { id: 2, category: "Product", src: "/images/opening.png", title: "Put the cat into the glass", year: "2026" },
-  { id: 3, category: "Brewing", src: "/images/forward-cat.jpg", title: "Grain Bill", year: "2026" },
-  { id: 4, category: "Vibe", src: "/images/maew.jpg", title: "Golden Lager", year: "2026" },
+  { id: 3, category: "Brewing", src: "/images/forward-cat.jpg", title: "Vote Me", year: "2026" },
+  { id: 4, category: "Vibe", src: "/images/maew.jpg", title: "Golden Hour", year: "2026" },
   { id: 5, category: "Vibe", src: "/images/canmaew-hk.png", title: "Maew Salid in HongKong", year: "2026" },
   { id: 6, category: "Vibe", src: "/images/fridaycat.jpg", title: "Friday Cat", year: "2026" },
-  { id: 7, category: "Vibe", src: "/images/catintheboat.jpg", title: "Razz", year: "2026" },
+  { id: 7, category: "Vibe", src: "/images/catintheboat.jpg", title: "Feel all the power", year: "2026" },
   { id: 8, category: "Vibe", src: "/images/maew-glass.jpg", title: "Put the cat into the glass", year: "2026" },
-  { id: 9, category: "Product", src: "/images/poster-beehern.png", title: "Grain Bill", year: "2026" },
+  { id: 9, category: "Product", src: "/images/poster-beehern.png", title: "Beehern", year: "2026" },
 ];
 
 export default function App() {

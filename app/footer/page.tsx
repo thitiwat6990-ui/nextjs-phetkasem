@@ -15,10 +15,10 @@ const currentYear = new Date().getFullYear();
                 <div className='colume1'>
                     <img src='/images/zunnero.png' alt='zunnero-logo' className='logo-zunnero'></img>
                     <span className='contact-us'>CONTACT US</span>
-                    <div style={{display:'flex', marginTop:'15px', gap:'10px'}}>
+                    {/* <div style={{display:'flex', marginTop:'15px', gap:'10px'}}>
                         <IoMdCall className='svg' ></IoMdCall>
-                        <a target='_blank' href='tel:092-6541461' className='phone'>92-654-1461</a>
-                    </div>
+                        <a target='_blank' href='tel:092-6541461' className='phone'></a>
+                    </div> */}
                     <div style={{display:'flex', marginTop:'15px', gap:'10px'}}>
                         <FaLine className='svg' ></FaLine>
                         <a target='_blank' href='' className='line'>@phetkasem</a>

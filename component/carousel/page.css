@@ -1,7 +1,7 @@
 
 .carousel-container {
   width: 100%;
-  height: 800px; 
+  height: 760px; 
   position: relative;
   overflow: hidden;
   background-color: #000;
@@ -28,10 +28,13 @@
   
 }
 
-.carousel-slide img {
+.carousel-slide img,
+.carousel-slide video {
   width: 100%;
   height: 100%;
-  object-fit: cover; 
+  object-fit: cover; /* หัวใจสำคัญ: ทำให้วิดีโอขยายเต็มพื้นที่โดยไม่เสียสัดส่วน */
+  object-position: center;
+  display: block;
 }
 
 /* เงาดำจางๆ ทับรูป (เพื่อให้ตัวหนังสือขาวเด่นขึ้น) */
@@ -60,17 +63,18 @@
 .carousel-content h1 {
     text-align: left;
   font-size: 90px;
-    margin-top: -200px;
+    margin-top: -100px;
     font-weight: 900;
     margin-left: 150px;
     line-height: 80px;
-    color: white;
-    text-shadow: 10px 4px 0 rgb(0, 0, 0);
+    color: rgb(241, 241, 241);
+    text-shadow: 5px 5px 0 rgb(0, 0, 0);
     transform: translateX(-150px);
     transition: opacity 0.8s ease-out, transform 0.8s ease-out;
     z-index: 3;
     white-space: pre-line;
     line-height: 1.2;
+    font-family: "Noto Sans";
 }
 
 .carousel-content h3 {
@@ -157,20 +161,27 @@
   .carousel-container {
     height: 400px; 
     margin-top: 135px;
+    
+  }
+  .hide-on-mobile {
+    display: none !important;
   }
   
   .carousel-content h1 {
-    font-size: 32px; /* ลดขนาดตัวหนังสือ */
+    font-size: 38px; /* ลดขนาดตัวหนังสือ */
     text-align: center;
     justify-content: center;
     display: flex;
     align-items: center;
-    margin-top:-100px;
-    margin-left:290px;
+    margin-top:-00px;
+    margin-left:300px;
+    text-shadow: 5px 0px 0 rgb(0, 0, 0);
+    color: white;
+    
   }
   
   .carousel-content h3 {
-    font-size: 14px;
+    display: none;
   }
   
   .nav-btn {

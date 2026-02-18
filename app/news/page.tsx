@@ -17,9 +17,25 @@ import {
   X
 } from 'lucide-react';
 
+// --- เพิ่ม Interface สำหรับกำหนด Type ---
+interface Article {
+  id: number;
+  tag?: string;
+  tagColor?: string;
+  imgSrc?: string;
+  date?: string;
+  category?: string;
+  title?: string;
+  desc?: string;
+  type: string;
+  content?: string;
+  hasCatOverlay?: boolean;
+  isGrayscaleHover?: boolean;
+}
+
 // ข้อมูลจำลองสำหรับข่าวทั้งหมด 3 หน้า (18 รายการ)
 const newsData = [
-  // --- Page 1 ---
+  // ... (ข้อมูลเดิมทั้งหมด ห้ามลบ/แก้ไข)
   {
       id: 1,
       tag: "Product",
@@ -96,7 +112,6 @@ If you see my face on a can anywhere... don't leave me there. Take me home with 
     id: 6,
     type: 'subscribe' 
   },
-  // --- Page 2 (ข้อมูลใหม่) ---
   {
     id: 7,
     type: 'article',
@@ -185,7 +200,10 @@ We hope you’ll give ZUNNERO a warm place in your hearts`
 
 export default function App() {
   const [currentPage, setCurrentPage] = useState(1);
-  const [selectedArticle, setSelectedArticle] = useState(null);
+  
+  // --- แก้ไขตรงนี้: กำหนด Type <Article | null> ---
+  const [selectedArticle, setSelectedArticle] = useState<Article | null>(null);
+  
   const itemsPerPage = 6;
   const totalPages = Math.ceil(newsData.length / itemsPerPage);
 
@@ -217,13 +235,15 @@ export default function App() {
     return () => observer.disconnect();
   }, [currentPage]);
 
-  const handlePageChange = (pageNumber) => {
+  const handlePageChange = (pageNumber: number) => {
     setCurrentPage(pageNumber);
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
-  const handleReadMore = (article) => {
+  // --- แก้ไขตรงนี้: กำหนด Type ของ parameter article ---
+  const handleReadMore = (article: Article) => {
     setSelectedArticle(article);
+    // eslint-disable-next-line react-hooks/immutability
     document.body.style.overflow = 'hidden'; 
   };
 
@@ -330,9 +350,11 @@ export default function App() {
                 category={item.category}
                 title={item.title}
                 desc={item.desc}
-                hasCatOverlay={item.hasCatOverlay}
-                isGrayscaleHover={item.isGrayscaleHover}
-                onReadMore={() => handleReadMore(item)} 
+                // eslint-disable-next-line @typescript-eslint/no-explicit-any
+                hasCatOverlay={(item as any).hasCatOverlay ?? false}
+                // eslint-disable-next-line @typescript-eslint/no-explicit-any
+                isGrayscaleHover={(item as any).isGrayscaleHover ?? false}
+                onReadMore={() => handleReadMore(item as Article)} 
               />
             );
           })}
@@ -379,7 +401,6 @@ export default function App() {
       
       {/* Modal Popup for Read More */}
       {selectedArticle && (
-        // แก้ไข: เปลี่ยน z-50 เป็น z-[9999] เพื่อให้ Modal อยู่เหนือ Header แน่นอน
         <div className="fixed inset-0 z-[9999] flex items-center justify-center p-4">
           {/* Backdrop */}
           <div 
@@ -444,8 +465,21 @@ export default function App() {
   );
 }
 
-// Sub-component for Article Cards
-function ArticleCard({ tag, tagColor, imgSrc, date, category, title, desc, hasCatOverlay, isGrayscaleHover, onReadMore }) {
+// --- แก้ไขตรงนี้: กำหนด Type ให้ props ของ Sub-component ---
+interface ArticleCardProps {
+  tag?: string;
+  tagColor?: string;
+  imgSrc?: string;
+  date?: string;
+  category?: string;
+  title?: string;
+  desc?: string;
+  hasCatOverlay?: boolean;
+  isGrayscaleHover?: boolean;
+  onReadMore: () => void;
+}
+
+function ArticleCard({ tag, tagColor, imgSrc, date, category, title, desc, hasCatOverlay, isGrayscaleHover, onReadMore }: ArticleCardProps) {
   return (
     <article className="news-card reveal group bg-white rounded-2xl overflow-hidden border border-gray-100 shadow-sm relative hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 flex flex-col h-full">
       <div className={`absolute top-4 left-4 z-20 ${tagColor} text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wide`}>

@@ -95,3 +95,23 @@
   }
 }
 
+@media (max-width: 380px) {
+  .enjoy {
+    font-size: 1.2rem;
+    margin-top: 50px;
+    margin-left: 0px;
+    text-align: center;
+  }
+
+  .overlay::before {
+    display: absolute;
+    overflow: hidden;
+    position: absolute;
+    top: 335;
+    left: 30;
+    width: 80%;
+    height: 430px;
+  }
+
+}
+

@@ -220,3 +220,16 @@
         display: none;
     }
 }
+
+@media ( max-width: 380px) {
+    .pks-brewing {
+    font-size: 22px;
+    font-weight: 900;
+    margin-top: 0px;
+    color: #a0a0a0;
+    text-transform: uppercase;
+    display: flex;
+    justify-content: center;
+    padding-top: 50px;
+}
+}

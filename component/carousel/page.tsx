@@ -7,20 +7,23 @@ export default function Carousel() {
   const slides = [
     {
       id: 1,
-      image: "/images/severbeer.png",
-      title: "ORDINARY\nBRAND",
+      type: "video",
+      src: "/videos/maew-salid.mp4",
+      title: "PHET\nKASEM\nBREWING",
       subtitle: "",
     },
     {
       id: 2,
-      image: "/images/bggallery.png",
-      title: "ULTIMATE\nFLAVOR",
+      type: "image",
+      src: "/images/severbeer.png",
+      title: "ULTIMATE\nFLAVOR\nBEER",
       subtitle: "",
     },
     {
       id: 3,
-      image: "/images/5productsmain.png",
-      title: "MEET SOME \nSPECIAL DRINK",
+      type: "image",
+      src: "/images/bggallery.png",
+      title: "MEET\nSOME\nSPECIAL\nDRINK",
       subtitle: "",
     },
   ];
@@ -42,8 +45,8 @@ export default function Carousel() {
   useEffect(() => {
     const interval = setInterval(() => {
       nextSlide();
-    }, 9000);
-    return () => clearInterval(interval); // ล้างเวลาเมื่อเปลี่ยนหน้า
+    }, 8000);
+    return () => clearInterval(interval);
   }, [currentIndex]);
 
   return (
@@ -52,22 +55,39 @@ export default function Carousel() {
         className="carousel-track"
         style={{ transform: `translateX(-${currentIndex * 100}%)` }}
       >
-        {slides.map((slide) => (
+        {slides.map((slide, index) => ( // เพิ่ม index ตรงนี้
           <div key={slide.id} className="carousel-slide">
-            <img src={slide.image} alt={slide.title} />
+            
+            {slide.type === "video" ? (
+              <video
+                src={slide.src}
+                autoPlay
+                loop
+                muted
+                playsInline
+                className="carousel-media"
+              />
+            ) : (
+              <img 
+                src={slide.src} 
+                alt={slide.title} 
+                className="carousel-media" 
+              />
+            )}
 
             <div className="carousel-content">
               <h3>{slide.subtitle}</h3>
-              <h1>{slide.title}</h1>
+              {/* เพิ่มเงื่อนไข: ถ้าเป็นสไลด์แรก (index 0) ให้ใส่ class hide-on-mobile */}
+              <h1 className={index === 0 ? "hide-on-mobile" : ""}>
+                {slide.title}
+              </h1>
             </div>
 
-            {/* เงามืดๆ ทับรูปให้อ่านหนังสือออก */}
             <div className="overlay-dark"></div>
           </div>
         ))}
       </div>
 
-      {/* ปุ่มกดซ้าย-ขวา */}
       <button className="nav-btn prev" onClick={prevSlide}>
         &#10094;
       </button>
@@ -75,7 +95,6 @@ export default function Carousel() {
         &#10095;
       </button>
 
-      {/* จุดบอกตำแหน่ง (Dots) ด้านล่าง */}
       <div className="carousel-dots">
         {slides.map((_, index) => (
           <div
@@ -85,7 +104,6 @@ export default function Carousel() {
           ></div>
         ))}
       </div>
-      
     </div>
   );
 }

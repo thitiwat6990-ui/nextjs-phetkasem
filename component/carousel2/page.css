@@ -135,3 +135,31 @@
     font-size: 1rem;
   }
 }
+
+@media (max-width: 380px) {
+  .navButton:first-child {
+  left: 20px;
+}
+
+.navButton:last-child {
+  right: 20px; 
+}
+
+.coming-soon-label {
+  position: absolute;
+  top: 45%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #F47920; 
+  color: white;
+  border: 1px solid black;
+  font-weight: bold;
+  font-size: 0.8rem;
+  padding: 8px 16px;
+  text-transform: uppercase;
+  z-index: 15;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+  white-space: nowrap;
+}
+
+}
