@@ -64,6 +64,17 @@ const products = [
     imageUrl: "./images/bblue-label.png", 
     featuredImageUrl: "/ ",
     thumbUrl: "./images/catfeez.png"
+  },
+  { 
+    name: "COMING SOON. . .", 
+    desc: "MORE FLAVORS COMING SOON",
+    flavor: "Get ready to discover new flavors",
+    story: "Stay tuned for our next signature craft.",
+    stats: { },
+    color: "#000000", // สีพื้นหลังหน้าสุดท้าย
+    textColor: "#ffffff", 
+    imageUrl: "./images/coming-soonlabel.png", // <--- ใส่ชื่อไฟล์ลายกระป๋องหน้าสุดท้ายที่นี่!
+    thumbUrl: "./images/coming-soonlabel.png"
   }
 ];
 
@@ -334,8 +345,8 @@ export default function App() {
         ))}
 
         {/* Final Page */}
-        <section className="product-section h-screen flex items-center px-[10%] snap-start snap-always pointer-events-none">
-          <div className="product-info hidden md:block max-w-[800px] opacity-0 -translate-x-12 transition-all duration-700">
+        <section >
+          {/* <div className="product-info hidden md:block max-w-[800px] opacity-0 -translate-x-12 transition-all duration-700">
             <p className="text-orange-500 font-bold tracking-[0.3em] uppercase mb-4">The Collection</p>
             <h1 className="product-title text-5xl md:text-7xl text-white mb-8 uppercase leading-tight">
               MORE FLAVORS<br/>COMING SOON
@@ -343,7 +354,7 @@ export default function App() {
             <p className="text-gray-400 text-xl max-w-lg">
               เตรียมพบกับรสชาติใหม่ๆ จากแมวสลิดที่พร้อมจะเปลี่ยนทุกค่ำคืนของคุณให้เป็นความทรงจำที่พิเศษยิ่งขึ้น
             </p>
-          </div>
+          </div> */}
         </section>
       </div>
 

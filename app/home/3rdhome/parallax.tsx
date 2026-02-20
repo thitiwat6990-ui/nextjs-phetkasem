@@ -39,7 +39,9 @@ const ParallaxHome = () => {
               or whose extraordinary path might cross yours.
             </p>
           </div>
-          <img src='/images/homebrew.png' className='logo-homebrew'></img>
+          <div>
+            <img src='/images/homebrew.png' className='logo-homebrew'></img>
+          </div>
         </div>
         
         <h1 ></h1>

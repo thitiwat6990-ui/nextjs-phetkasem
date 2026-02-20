@@ -1,11 +1,11 @@
 .overlay {
   position: absolute;
-  justify-content: center;
+  justify-content: space-between;
   width: 90%;
   height: 500px;
   margin-left: 70px;
   z-index: 1;
-  margin-top: -800px;
+  margin-top: -700px;
 }
 
 .overlay::before {
@@ -29,7 +29,7 @@
 .enjoy {
   font-size: 3rem;
   font-weight: 900;
-  font-family: "Georgia", serif;
+  font-family: "Noto San";
   margin-top: 70px;
   margin-left: 100px;
   color: white;
