@@ -25,23 +25,33 @@ interface HighlightItem {
 // --- 2. Mock Data ---
 const HIGHLIGHT_ITEM: HighlightItem = {
   id: 1,
-  title: "The Sunshine Pilsner",
+  title: "The Fusion Pilsner",
   subtitle: "Limited Batch No. 42",
   desc: "Experience the depth of malt, blended with the aromas of Japanese rice and roasted Thai rice, in a can design that is simple yet powerful.",
-  image: "https://images.unsplash.com/photo-1571613316887-6f8d5cbf7ef7?q=80&w=1471&auto=format&fit=crop",
-  video: '/videos/videobeer.mp4', 
+  image: "/ ",
+  video: '/videos/maew-gang.mp4', 
 };
 
 const GALLERY_IMAGES: GalleryItem[] = [
   { id: 1, category: "Product", src: "/images/maew-salid-labelcan.png", title: "Maew Salid", year: "2026" },
-  { id: 2, category: "Product", src: "/images/opening.png", title: "Put the cat into the glass", year: "2026" },
-  { id: 3, category: "Brewing", src: "/images/forward-cat.jpg", title: "Vote Me", year: "2026" },
-  { id: 4, category: "Vibe", src: "/images/maew.jpg", title: "Golden Hour", year: "2026" },
-  { id: 5, category: "Vibe", src: "/images/canmaew-hk.png", title: "Maew Salid in HongKong", year: "2026" },
-  { id: 6, category: "Vibe", src: "/images/fridaycat.jpg", title: "Friday Cat", year: "2026" },
-  { id: 7, category: "Vibe", src: "/images/catintheboat.jpg", title: "Feel all the power", year: "2026" },
-  { id: 8, category: "Vibe", src: "/images/maew-glass.jpg", title: "Put the cat into the glass", year: "2026" },
-  { id: 9, category: "Product", src: "/images/poster-beehern.png", title: "Beehern", year: "2026" },
+  { id: 2, category: "Product", src: "/images/sarid8.jpg", title: "ZUNNERO BREWING", year: "2026" },
+  { id: 3, category: "Brewing", src: "/images/fridaycat.jpg", title: "Beer Lover", year: "2026" },
+  { id: 4, category: "Vibe", src: "/images/V3.jpg", title: "Nong Maew", year: "2026" },
+  { id: 5, category: "Product", src: "/images/sarid20.jpeg", title: "Bombbb", year: "2026" },
+  { id: 6, category: "Product", src: "/images/sarid4.jpg", title: "Maew Gang", year: "2026" },
+  { id: 7, category: "Vibe", src: "/images/maew.jpg", title: "Golden Hour", year: "2026" },
+  { id: 8, category: "Vibe", src: "/images/canmaew-hk.png", title: "Maew Salid in HongKong", year: "2026" },
+  { id: 9, category: "Brewing", src: "/images/B2.jpg", title: "Valentine Day", year: "2026" },
+  { id: 10, category: "Brewing", src: "/images/nernoi.jpg", title: "Ner Noi Na", year: "2026" },
+  { id: 11, category: "Vibe", src: "/images/V2.jpg", title: "Saliddddd", year: "2026" },
+  { id: 12, category: "Product", src: "/images/sarid2.jpg", title: "Single maew", year: "2026" },
+
+  { id: 13, category: "Product", src: "/images/Pbee1.jpg", title: "Beehern", year: "2026" },
+  { id: 14, category: "Product", src: "/images/Pbee2.jpg", title: "Honey Mead", year: "2026" },
+  { id: 15, category: "Product", src: "/images/Pbee3.jpg", title: "1 glass", year: "2026" },
+
+
+
 ];
 
 export default function App() {
