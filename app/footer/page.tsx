@@ -21,7 +21,7 @@ const currentYear = new Date().getFullYear();
                     </div> */}
                     <div style={{display:'flex', marginTop:'15px', gap:'10px'}}>
                         <FaLine className='svg' ></FaLine>
-                        <a target='_blank' href='' className='line'>@phetkasem</a>
+                        <a target='_blank' href='https://lin.ee/0fUAVHt' className='line'>@phetkasembrewing</a>
                     </div>
                     <div style={{display:'flex', marginTop:'15px', gap:'10px'}}>
                         <FaFacebook className='svg'></FaFacebook>

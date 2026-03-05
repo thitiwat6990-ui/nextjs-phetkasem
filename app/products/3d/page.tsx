@@ -3,6 +3,17 @@
 import React, { useEffect, useRef, useState } from 'react';
 import './page.css'
 
+// วางไว้บนสุดของไฟล์ นอกฟังก์ชัน
+declare global {
+  interface Window {
+    THREE: any;
+    gsap: any;
+    ScrollTrigger: any;
+  }
+}
+
+
+
 // ข้อมูลสินค้าแบบละเอียดสำหรับ Popup
 const products = [
   { 
@@ -79,15 +90,14 @@ const products = [
 ];
 
 export default function App() {
-  const canvasRef = useRef(null);
-  const containerRef = useRef(null);
+const canvasRef = useRef<HTMLDivElement>(null);  const containerRef = useRef(null);
   const currentIndexRef = useRef(0);
   const [isScriptsLoaded, setScriptsLoaded] = useState(false);
   const [showPopup, setShowPopup] = useState(false);
   const [activeProduct, setActiveProduct] = useState(products[0]);
 
   useEffect(() => {
-    const loadScript = (src) => {
+    const loadScript = (src: string) => {
       return new Promise((resolve, reject) => {
         const script = document.createElement('script');
         script.src = src;
@@ -182,7 +192,7 @@ export default function App() {
     mainLight.position.set(5, 5, 5);
     scene.add(mainLight);
 
-    const onClick = (event) => {
+    const onClick = (event: { clientX: number; clientY: number; }) => {
       const mouse = new THREE.Vector2(
         (event.clientX / window.innerWidth) * 2 - 1,
         -(event.clientY / window.innerHeight) * 2 + 1
@@ -199,7 +209,7 @@ export default function App() {
     window.addEventListener('click', onClick);
 
     const sections = gsap.utils.toArray('.product-section');
-    sections.forEach((section, i) => {
+    sections.forEach((section: { querySelector: (arg0: string) => any; }, i: number) => {
       ScrollTrigger.create({
         trigger: section,
         scroller: containerRef.current,
@@ -268,12 +278,18 @@ export default function App() {
     return () => {
       window.removeEventListener('resize', handleResize);
       window.removeEventListener('click', onClick);
-      ScrollTrigger.getAll().forEach(t => t.kill());
+      ScrollTrigger.getAll().forEach((t: { kill: () => any; }) => t.kill());
       renderer.dispose();
     };
   }, [isScriptsLoaded]);
 
-  const StatBar = ({ label, value, color }) => (
+  interface StatBarProps {
+  label: string;
+  value: number;
+  color: string;
+}
+
+  const StatBar = ({ label, value, color }: StatBarProps) => (
     <div className="mb-4">
       <div className="flex justify-between text-[10px] mb-1 font-bold uppercase tracking-widest text-gray-400">
         <span>{label}</span>
@@ -293,7 +309,7 @@ export default function App() {
     >
       <style>{`
         @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@800&family=Noto+Serif+Thai:wght@100..900&display=swap');
-        * { font-family: 'Noto Serif Thai' !important; }
+        * { font-family: 'Noto San' !important; }
         .product-title { font-family: 'Playfair Display' !important; }
         ::-webkit-scrollbar { width: 0px; }
         

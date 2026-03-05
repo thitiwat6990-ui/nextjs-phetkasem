@@ -34,21 +34,21 @@ const HIGHLIGHT_ITEM: HighlightItem = {
 
 const GALLERY_IMAGES: GalleryItem[] = [
   { id: 1, category: "Product", src: "/images/maew-salid-labelcan.png", title: "Maew Salid", year: "2026" },
-  { id: 2, category: "Product", src: "/images/sarid8.jpg", title: "ZUNNERO BREWING", year: "2026" },
+  { id: 2, category: "Product", src: "/images/sarid8-mini.jpg", title: "ZUNNERO BREWING", year: "2026" },
   { id: 3, category: "Brewing", src: "/images/fridaycat.jpg", title: "Beer Lover", year: "2026" },
-  { id: 4, category: "Vibe", src: "/images/V3.jpg", title: "Nong Maew", year: "2026" },
+  { id: 4, category: "Vibe", src: "/images/V3-mini.jpg", title: "Nong Maew", year: "2026" },
   { id: 5, category: "Product", src: "/images/sarid20.jpeg", title: "Bombbb", year: "2026" },
-  { id: 6, category: "Product", src: "/images/sarid4.jpg", title: "Maew Gang", year: "2026" },
+  { id: 6, category: "Product", src: "/images/sarid4-mini.jpg", title: "Maew Gang", year: "2026" },
   { id: 7, category: "Vibe", src: "/images/maew.jpg", title: "Golden Hour", year: "2026" },
   { id: 8, category: "Vibe", src: "/images/canmaew-hk.png", title: "Maew Salid in HongKong", year: "2026" },
-  { id: 9, category: "Brewing", src: "/images/B2.jpg", title: "Valentine Day", year: "2026" },
+  { id: 9, category: "Brewing", src: "/images/B2-mini.jpg", title: "Valentine Day", year: "2026" },
   { id: 10, category: "Brewing", src: "/images/nernoi.jpg", title: "Ner Noi Na", year: "2026" },
-  { id: 11, category: "Vibe", src: "/images/V2.jpg", title: "Saliddddd", year: "2026" },
-  { id: 12, category: "Product", src: "/images/sarid2.jpg", title: "Single maew", year: "2026" },
+  { id: 11, category: "Vibe", src: "/images/V2-mini.jpg", title: "Saliddddd", year: "2026" },
+  { id: 12, category: "Product", src: "/images/sarid2-mini.jpg", title: "Single maew", year: "2026" },
 
-  { id: 13, category: "Product", src: "/images/Pbee1.jpg", title: "Beehern", year: "2026" },
-  { id: 14, category: "Product", src: "/images/Pbee2.jpg", title: "Honey Mead", year: "2026" },
-  { id: 15, category: "Product", src: "/images/Pbee3.jpg", title: "1 glass", year: "2026" },
+  { id: 13, category: "Product", src: "/images/Pbee1-mini-1.jpg", title: "Beehern", year: "2026" },
+  { id: 14, category: "Product", src: "/images/Pbee2-mini.jpg", title: "Honey Mead", year: "2026" },
+  { id: 15, category: "Product", src: "/images/Pbee3-mini.jpg", title: "1 glass", year: "2026" },
 
 
 

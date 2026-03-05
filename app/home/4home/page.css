@@ -32,11 +32,11 @@
   transform: translateX(-50%);
   z-index: 19;
   transition: 0.7s;
-  --left: 45px;
+  --left: -40px;
 }
 
 .banner .product .soda {
-  background: url(/images/rorkerlabelcan.png) var(--left),
+  background: url(/images/maew-label.png) var(--left),
     url(/images/mock-up.png);
   background-size: 150% 71%, auto 100%;
   width: 380px;
@@ -53,7 +53,7 @@
 }
 
 .banner .product:hover {
-  --left: -820px;
+  --left: -840px;
   transform: translateX(-50%) translateY(-120px);
 }
 
